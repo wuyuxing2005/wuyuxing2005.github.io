@@ -14,12 +14,8 @@
 <meta property="og:description" content="线程池代码实现#include &quot;..&#x2F;lock&#x2F;lock.h&quot; #include &lt;queue&gt; template &lt;typename T&gt; class thread_pool { private:     int max_thread_num;             &#x2F;&#x2F; 线程数量     int max_request_num;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-01-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-12T09:53:27.035Z">
+<meta property="article:modified_time" content="2026-01-13T08:44:21.991Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Reactor">
-<meta property="article:tag" content="pthread">
-<meta property="article:tag" content="线程池">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -84,7 +80,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C++</a>►<a class="article-category-link" href="/categories/C/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a>
+    <a class="article-category-link" href="/categories/webserver/">webserver</a>►<a class="article-category-link" href="/categories/webserver/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
   </div>
 
   </div>
@@ -198,12 +194,10 @@ void thread_pool&lt;T&gt;::run()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/12/day02__threadpoll/" data-id="cuidLzGGMrCzVasLCakICSHT-" data-title="pthread 线程池实现解析" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/01/12/day02__threadpoll/" data-id="cuidofHaCTD6cpg8nr-q-j9EQ" data-title="pthread 线程池实现解析" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reactor/" rel="tag">Reactor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pthread/" rel="tag">pthread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="tag">线程池</a></li></ul>
-
     </footer>
   </div>
   
@@ -230,7 +224,7 @@ void thread_pool&lt;T&gt;::run()
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/webserver/">webserver</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/webserver/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/webserver/%E9%94%81/">锁</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -240,7 +234,7 @@ void thread_pool&lt;T&gt;::run()
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reactor/" rel="tag">Reactor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/home/" rel="tag">home</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pthread/" rel="tag">pthread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%92%E6%96%A5/" rel="tag">互斥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="tag">线程池</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%92%E6%96%A5/" rel="tag">互斥</a></li></ul>
     </div>
   </div>
 
@@ -250,7 +244,7 @@ void thread_pool&lt;T&gt;::run()
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/home/" style="font-size: 10px;">home</a> <a href="/tags/pthread/" style="font-size: 10px;">pthread</a> <a href="/tags/%E4%BA%92%E6%96%A5/" style="font-size: 10px;">互斥</a> <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" style="font-size: 10px;">线程池</a>
+      <a href="/tags/%E4%BA%92%E6%96%A5/" style="font-size: 10px;">互斥</a>
     </div>
   </div>
 
