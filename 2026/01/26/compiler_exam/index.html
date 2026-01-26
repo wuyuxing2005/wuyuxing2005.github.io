@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>南京大学智软院编译原理（陈林）25秋期末回忆 | Wuyuxing's Blog</title><meta name="author" content="Wuyuxing"><meta name="copyright" content="Wuyuxing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="很简单很简单，没作业题难，且很多难的知识点都没考到后面几道大题考得很浅如果能熟练掌握作业题考试完全能拿满分（并不是说原题） 第一章：简答题：1.编译器与解释器关系2.写出你认为最难的三个知识点…3.其他的忘了。 第三章：词法分析：根据正则表达式构建NFA，DFA，最小化DFA，画图 第四章：语法分析：SLR(1)文法，First，Follow集合给出SLR表，项集，项集转化图，判断是不是SLR文法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="南京大学智软院编译原理（陈林）25秋期末回忆">
+<meta property="og:url" content="https://wuyuxing2005.github.io/2026/01/26/compiler_exam/index.html">
+<meta property="og:site_name" content="Wuyuxing&#39;s Blog">
+<meta property="og:description" content="很简单很简单，没作业题难，且很多难的知识点都没考到后面几道大题考得很浅如果能熟练掌握作业题考试完全能拿满分（并不是说原题） 第一章：简答题：1.编译器与解释器关系2.写出你认为最难的三个知识点…3.其他的忘了。 第三章：词法分析：根据正则表达式构建NFA，DFA，最小化DFA，画图 第四章：语法分析：SLR(1)文法，First，Follow集合给出SLR表，项集，项集转化图，判断是不是SLR文法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-01-26T15:37:15.000Z">
+<meta property="article:modified_time" content="2026-01-26T16:00:29.078Z">
+<meta property="article:author" content="Wuyuxing">
+<meta property="article:tag" content="课程复习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "南京大学智软院编译原理（陈林）25秋期末回忆",
+  "url": "https://wuyuxing2005.github.io/2026/01/26/compiler_exam/",
+  "image": "https://wuyuxing2005.github.io/img/butterfly-icon.png",
+  "datePublished": "2026-01-26T15:37:15.000Z",
+  "dateModified": "2026-01-26T16:00:29.078Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Wuyuxing",
+      "url": "https://wuyuxing2005.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wuyuxing2005.github.io/2026/01/26/compiler_exam/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '南京大学智软院编译原理（陈林）25秋期末回忆',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><style>
+#site-preload{position:fixed;inset:0;background:#fff;z-index:999999;display:flex;align-items:center;justify-content:center;transition:opacity .3s ease;}
+#site-preload.hide{opacity:0;pointer-events:none;}
+#site-preload .dot{width:10px;height:10px;border-radius:50%;margin:0 6px;background:#000;animation:bounce .8s infinite alternate;}
+#site-preload .dot:nth-child(2){animation-delay:.15s;}
+#site-preload .dot:nth-child(3){animation-delay:.3s;}
+@keyframes bounce{to{transform:translateY(-10px);opacity:.4;}}
+</style>
+<div id="site-preload"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/cover.png);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Wuyuxing's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">南京大学智软院编译原理（陈林）25秋期末回忆</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">南京大学智软院编译原理（陈林）25秋期末回忆</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-01-26T15:37:15.000Z" title="发表于 2026-01-26 23:37:15">2026-01-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-26T16:00:29.078Z" title="更新于 2026-01-27 00:00:29">2026-01-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E7%A8%8B/">编译原理课程</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E7%A8%8B/%E6%9C%9F%E6%9C%AB%E5%9B%9E%E5%BF%86/">期末回忆</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><strong>很简单很简单，没作业题难，且很多难的知识点都没考到</strong><br>后面几道大题考得很浅<br>如果能熟练掌握作业题考试完全能拿满分（并不是说原题）</p>
+<h3 id="第一章：简答题："><a href="#第一章：简答题：" class="headerlink" title="第一章：简答题："></a>第一章：简答题：</h3><p>1.编译器与解释器关系<br>2.写出你认为最难的三个知识点…<br>3.其他的忘了。</p>
+<h3 id="第三章：词法分析："><a href="#第三章：词法分析：" class="headerlink" title="第三章：词法分析："></a>第三章：词法分析：</h3><p>根据正则表达式构建NFA，DFA，最小化DFA，画图</p>
+<h3 id="第四章：语法分析："><a href="#第四章：语法分析：" class="headerlink" title="第四章：语法分析："></a>第四章：语法分析：</h3><p>SLR(1)文法，First，Follow集合<br>给出SLR表，项集，项集转化图，判断是不是SLR文法</p>
+<h3 id="第五章：语法制导翻译："><a href="#第五章：语法制导翻译：" class="headerlink" title="第五章：语法制导翻译："></a>第五章：语法制导翻译：</h3><p>根据语法写出一个SDD还是SDT忘了，然后判断是什么属性、</p>
+<h3 id="第六章：中间代码生成："><a href="#第六章：中间代码生成：" class="headerlink" title="第六章：中间代码生成："></a>第六章：中间代码生成：</h3><p>忘了</p>
+<h3 id="第七章：运行时环境："><a href="#第七章：运行时环境：" class="headerlink" title="第七章：运行时环境："></a>第七章：运行时环境：</h3><p>存储分配方式和活动记录，好像还有画活动树<br>填空题格式，很简单</p>
+<h3 id="第八章：代码生成："><a href="#第八章：代码生成：" class="headerlink" title="第八章：代码生成："></a>第八章：代码生成：</h3><p>三地址语言优化</p>
+<h3 id="第九章：优化："><a href="#第九章：优化：" class="headerlink" title="第九章：优化："></a>第九章：优化：</h3><p>到达定值分析全部流程</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wuyuxing2005.github.io">Wuyuxing</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wuyuxing2005.github.io/2026/01/26/compiler_exam/">https://wuyuxing2005.github.io/2026/01/26/compiler_exam/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wuyuxing2005.github.io" target="_blank">Wuyuxing's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%BE%E7%A8%8B%E5%A4%8D%E4%B9%A0/">课程复习</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/01/26/compiler/" title="南京大学智软院编译原理（陈林）复习资料"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">南京大学智软院编译原理（陈林）复习资料</div></div><div class="info-2"><div class="info-item-1">第一章：1.编译器：  一个编译器就是一个程序，读入以某一种语言（源语言）编写的程序，并把该程序翻译成为一个等价的、用另一种语言（目标语言）编写的程序 编译器与解释器：编译器是把源程序转化为目标程序解释器是逐行读取源程序并立即执行java结合了两种 编译器结构：前端与后端 前端：分析部分 后端：综合部份   程序设计语言 静态：  语言策略支持编译器静态决定某个问题 动态：  只允许在程序运行时刻作出决定  static指明了变量的存放位置可静态确定 作用域：    12345678910111213141516171819x = -10def printx():    x = 10    print(x)def addx():    x = x + 1    return xdef localx():    x = 1    return addx()printx()print(localx())print(addx())静态： 10，-9，-9；动态： 10，2，-9；   静态的若函数内部没有，在x定义处找x值； 动态的若函数内部没有，找调用者处x的值；  第三章：词法分析...</div></div></div></a><a class="pagination-related" href="/2026/01/24/unity-3dtouch-question/" title="unity-3dtouch-question"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">unity-3dtouch-question</div></div><div class="info-2"><div class="info-item-1">我的HapticActor为什么不能与我的HapticMateria产生力交互？ 1.如果你的HapticActor不是使用的插件自带的，那么使用插件自带的HapticActor来排查是不是HapticActor的问题，如果发现仍然不行。检查你的HapticMateria的脚本是否正常，是否按照要求包含了所需要的**注意：**不要包含HapticCollider，否则会无法产生力交互  为什么有时候会出现类似下面的报错？12Skipped updating the transform of this Rigidbody, because at least one of the position vector&#x27;s components is infinite. Could you have applied infinite forces, acceleration or set a huge velocity?  比较玄学的报错，我甚至无法稳定复现。可能包含多种情况  可能是你的雕刻笔设备点击play时没有在初始的槽中。 可能是你没有配好环境，建议检查一下你的该场景是否配...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/01/26/compiler/" title="南京大学智软院编译原理（陈林）复习资料"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-26</div><div class="info-item-2">南京大学智软院编译原理（陈林）复习资料</div></div><div class="info-2"><div class="info-item-1">第一章：1.编译器：  一个编译器就是一个程序，读入以某一种语言（源语言）编写的程序，并把该程序翻译成为一个等价的、用另一种语言（目标语言）编写的程序 编译器与解释器：编译器是把源程序转化为目标程序解释器是逐行读取源程序并立即执行java结合了两种 编译器结构：前端与后端 前端：分析部分 后端：综合部份   程序设计语言 静态：  语言策略支持编译器静态决定某个问题 动态：  只允许在程序运行时刻作出决定  static指明了变量的存放位置可静态确定 作用域：    12345678910111213141516171819x = -10def printx():    x = 10    print(x)def addx():    x = x + 1    return xdef localx():    x = 1    return addx()printx()print(localx())print(addx())静态： 10，-9，-9；动态： 10，2，-9；   静态的若函数内部没有，在x定义处找x值； 动态的若函数内部没有，找调用者处x的值；  第三章：词法分析...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wuyuxing</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wuyuxing2005"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%AE%80%E7%AD%94%E9%A2%98%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">第一章：简答题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">第三章：词法分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">第四章：语法分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">第五章：语法制导翻译：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9A%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">第六章：中间代码生成：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BF%90%E8%A1%8C%E6%97%B6%E7%8E%AF%E5%A2%83%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">第七章：运行时环境：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0%EF%BC%9A%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%EF%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">第八章：代码生成：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0%EF%BC%9A%E4%BC%98%E5%8C%96%EF%BC%9A"><span class="toc-number">8.</span> <span class="toc-text">第九章：优化：</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/26/compiler_exam/" title="南京大学智软院编译原理（陈林）25秋期末回忆">南京大学智软院编译原理（陈林）25秋期末回忆</a><time datetime="2026-01-26T15:37:15.000Z" title="发表于 2026-01-26 23:37:15">2026-01-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/26/compiler/" title="南京大学智软院编译原理（陈林）复习资料">南京大学智软院编译原理（陈林）复习资料</a><time datetime="2026-01-26T15:37:15.000Z" title="发表于 2026-01-26 23:37:15">2026-01-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/24/unity-3dtouch-question/" title="unity-3dtouch-question">unity-3dtouch-question</a><time datetime="2026-01-24T10:23:47.000Z" title="发表于 2026-01-24 18:23:47">2026-01-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/23/unity-3dtouch-day03/" title="unity-3dtouch-day03">unity-3dtouch-day03</a><time datetime="2026-01-23T10:23:47.000Z" title="发表于 2026-01-23 18:23:47">2026-01-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/21/unity-3dtouch-day02/" title="unity-3dtouch-day02">unity-3dtouch-day02</a><time datetime="2026-01-21T11:40:47.000Z" title="发表于 2026-01-21 19:40:47">2026-01-21</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Wuyuxing</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4-b1"></script><script src="/js/main.js?v=5.5.4-b1"></script><div class="js-pjax"></div><script>
+(function () {
+  var bgUrl = '/img/cover.png'; 
+
+  function hide() {
+    var el = document.getElementById('site-preload');
+    if (!el) return;
+    el.classList.add('hide');
+    setTimeout(function(){ el.remove(); }, 350);
+  }
+
+  window.addEventListener('load', function () {
+    var img = new Image();
+    img.src = bgUrl;
+    if (img.complete) return hide();
+    img.onload = hide;
+    img.onerror = hide;
+  });
+})();
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
