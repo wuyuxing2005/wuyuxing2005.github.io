@@ -566,8 +566,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }))
     }
 
+    const scheduleUpdate = btf.throttle(updateHeaderPositions, 200)
     updateHeaderPositions()
-    btf.addEventListenerPjax(window, 'resize', btf.throttle(updateHeaderPositions, 200))
+    btf.addEventListenerPjax(window, 'resize', scheduleUpdate)
+    btf.addEventListenerPjax(window, 'load', scheduleUpdate)
+    $article.querySelectorAll('img').forEach(img => {
+      if (!img.complete) {
+        btf.addEventListenerPjax(img, 'load', scheduleUpdate)
+      }
+    })
 
     const findHeadPosition = top => {
       if (top === 0) return false
