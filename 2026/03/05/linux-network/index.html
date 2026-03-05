@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>linux_network | Wuyuxing's Blog</title><meta name="author" content="Wuyuxing"><meta name="copyright" content="Wuyuxing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="实现简单的通信1.主机字节序和网络字节序：主机字节序指的就是小端字节序存储，网络字节序指的是大端字节序存储  规定：发送端需要将数据转主机字节序化为网络字节序，接收端要将网络字节序转化为主机字节序原因就是不同设备的存储方式不同，人为规定可以实现不同字节序的设备进行交互。  转化函数(就列举常用的)：  ip的转化： inet_pton: 十分制ip转化为网络字节序 inet_ntop: 网络字节序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux_network">
+<meta property="og:url" content="https://wuyuxing2005.github.io/2026/03/05/linux-network/index.html">
+<meta property="og:site_name" content="Wuyuxing&#39;s Blog">
+<meta property="og:description" content="实现简单的通信1.主机字节序和网络字节序：主机字节序指的就是小端字节序存储，网络字节序指的是大端字节序存储  规定：发送端需要将数据转主机字节序化为网络字节序，接收端要将网络字节序转化为主机字节序原因就是不同设备的存储方式不同，人为规定可以实现不同字节序的设备进行交互。  转化函数(就列举常用的)：  ip的转化： inet_pton: 十分制ip转化为网络字节序 inet_ntop: 网络字节序">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-03-05T03:57:54.000Z">
+<meta property="article:modified_time" content="2026-03-05T03:58:22.889Z">
+<meta property="article:author" content="Wuyuxing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "linux_network",
+  "url": "https://wuyuxing2005.github.io/2026/03/05/linux-network/",
+  "image": "https://wuyuxing2005.github.io/img/butterfly-icon.png",
+  "datePublished": "2026-03-05T03:57:54.000Z",
+  "dateModified": "2026-03-05T03:58:22.889Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Wuyuxing",
+      "url": "https://wuyuxing2005.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wuyuxing2005.github.io/2026/03/05/linux-network/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'linux_network',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><style>
+#site-preload{position:fixed;inset:0;background:#fff;z-index:999999;display:flex;align-items:center;justify-content:center;transition:opacity .3s ease;}
+#site-preload.hide{opacity:0;pointer-events:none;}
+#site-preload .dot{width:10px;height:10px;border-radius:50%;margin:0 6px;background:#000;animation:bounce .8s infinite alternate;}
+#site-preload .dot:nth-child(2){animation-delay:.15s;}
+#site-preload .dot:nth-child(3){animation-delay:.3s;}
+@keyframes bounce{to{transform:translateY(-10px);opacity:.4;}}
+</style>
+<div id="site-preload"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/cover.png);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Wuyuxing's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">linux_network</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">linux_network</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-05T03:57:54.000Z" title="发表于 2026-03-05 11:57:54">2026-03-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-05T03:58:22.889Z" title="更新于 2026-03-05 11:58:22">2026-03-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="实现简单的通信"><a href="#实现简单的通信" class="headerlink" title="实现简单的通信"></a>实现简单的通信</h1><h2 id="1-主机字节序和网络字节序："><a href="#1-主机字节序和网络字节序：" class="headerlink" title="1.主机字节序和网络字节序："></a>1.主机字节序和网络字节序：</h2><p>主机字节序指的就是小端字节序存储，网络字节序指的是大端字节序存储</p>
+<ul>
+<li><p>规定：<br>发送端需要将数据转主机字节序化为网络字节序，接收端要将网络字节序转化为主机字节序<br>原因就是不同设备的存储方式不同，人为规定可以实现不同字节序的设备进行交互。</p>
+</li>
+<li><p>转化函数(就列举常用的)：</p>
+<ul>
+<li>ip的转化：<ul>
+<li>inet_pton: 十分制ip转化为网络字节序</li>
+<li>inet_ntop: 网络字节序转化为十分制ip</li>
+</ul>
+</li>
+<li>端口号的转化：<ul>
+<li>htons：主机端口号转化为网络字节序</li>
+<li>ntohs：网络字节序转化为主机端口号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-socket与socketaddress的创建"><a href="#2-socket与socketaddress的创建" class="headerlink" title="2.socket与socketaddress的创建"></a>2.socket与socketaddress的创建</h2><ul>
+<li>socket 包括监听sokcet与连接socket，<ul>
+<li>在服务器端所建立的并绑定socket_address的是监听socket，其作用就是监听该socket上是否有请求连接的请求到达。</li>
+<li>在客户端所建立的是连接socket，它需要连接你想要连接的服务器的监听socket_address。</li>
+</ul>
+</li>
+<li>socket指的就是一个端口号和ip地址的二元对，即（port，ip）</li>
+<li>socket地址：<ul>
+<li>即该socket的具体内容<ul>
+<li>结构体：struct sockaddr_in <strong>(IPV4)</strong><ul>
+<li>sin_family: 地址族，一般为AF_INET</li>
+<li>sin_port: 端口号，使用htons函数转化为网络字节序</li>
+<li>sin_addr: ip地址，使用inet_pton函数转化为网络字节序</li>
+</ul>
+</li>
+<li>其中sin_addr又是一个结构体：<ul>
+<li>struct in_addr<ul>
+<li>s_addr: 存储ip地址，使用inet_pton函数转化为网络字节序</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>一般的创建socket地址的代码示例为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sockaddr_in sock_address&#123;&#125;;</span><br><span class="line">sock_address.sin_family = AF_INET;<span class="comment">//表示是IPV4</span></span><br><span class="line">sock_address.sin_port = <span class="built_in">htons</span>(<span class="number">9999</span>);<span class="comment">//设置端口号</span></span><br><span class="line">sock_address.sin_addr.s_addr= <span class="built_in">shifentonet</span>(<span class="string">&quot;127.0.0.1&quot;</span>)<span class="comment">//设置ip地址</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>socket创建：<ul>
+<li>socket实际上仍然是文件，存在唯一的文件描述符。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> socket_fd=<span class="built_in">socket</span>(AF_INET,SOCK_STREAM,<span class="number">0</span>);<span class="comment">//SOCK_STREAM表示使用TCP，SOCK_STREAM表示使用UDP</span></span><br><span class="line"><span class="comment">//socket_fd即为新创建的套接字的文件描述符      </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-socket连接与通信过程"><a href="#3-socket连接与通信过程" class="headerlink" title="3. socket连接与通信过程"></a>3. socket连接与通信过程</h2><ul>
+<li><p>socket与socket_address使用bind绑定</p>
+<ul>
+<li><p>只需要在服务器端的监听socket进行绑定</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span>(sokcet_fd,(sockaddr *)&amp;socket_address,<span class="built_in">sizeof</span>(socket_address));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中socket_address要转化为sockaddr类型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>连接socket</strong>的connect</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(socket_fd,(sockaddr*)&amp;sc_address,<span class="built_in">sizeof</span>(sc_address));</span><br></pre></td></tr></table></figure>
+<p>此处的connect的含义是让当前的连接socket向监听socket对应的address发送连接申请,词后需要等待server端的监听socket accpet</p>
+<ul>
+<li><strong>监听socke</strong>t的listen：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">listen</span>(socket_fd, SOMAXCONN);<span class="comment">//SOMAXCONN指的是内核允许的“已完成连接队列”的最大长度</span></span><br><span class="line"><span class="comment">//即等待accpet的队列的最大长度</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>监听socket</strong>的accept：<br>监听到连接之后，可以对监听队列进行accpet；</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> client_fd=<span class="built_in">accept</span>(fd, (sockaddr *)&amp;sc_address, &amp;<span class="built_in">sizeof</span>(sc_address));</span><br></pre></td></tr></table></figure>
+<p>此处的返回值是accpet到的连接socket的fd。之后client端和server端将通过该client_fd进行通讯。</p>
+<p>client端伪代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> fd=<span class="built_in">socket</span>(AF_INET,SOCK_STREAM,<span class="number">0</span>);<span class="comment">//连接socket</span></span><br><span class="line">sockaddr_in sc_address;</span><br><span class="line">sc_address.sin_family= AF_INET;</span><br><span class="line">sc_address.sin_port= <span class="built_in">htons</span>(port);</span><br><span class="line">sc_address.sin_addr.s_addr= <span class="built_in">shifentonet</span>(ip);<span class="comment">//十分制的char *ip转化为网络格式的char * ip</span></span><br><span class="line"><span class="built_in">connect</span>(fd,(sockaddr*)&amp;sc_address,<span class="built_in">sizeof</span>(sc_address));</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">  std::string input;</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">getline</span>(std::cin,input))&#123;</span><br><span class="line">....</span><br><span class="line">  <span class="built_in">send</span>(fd,input.<span class="built_in">data</span>(),input.<span class="built_in">size</span>(),<span class="number">0</span>);</span><br><span class="line">.........</span><br><span class="line">  <span class="type">char</span> buffer[MAX_BUFFER_LEN];</span><br><span class="line">  <span class="built_in">recv</span>(fd,buffer,<span class="built_in">sizeof</span>(buffer),<span class="number">0</span>);</span><br><span class="line">  .......</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>server端伪代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> socket_fd=<span class="built_in">socket</span>(AF_INET,SOCK_STREAM,<span class="number">0</span>);<span class="comment">//监听socket</span></span><br><span class="line">sockaddr_in sc_address;</span><br><span class="line">sc_address.sin_family= AF_INET;</span><br><span class="line">sc_address.sin_port= <span class="built_in">htons</span>(port);</span><br><span class="line">sc_address.sin_addr.s_addr= <span class="built_in">shifentonet</span>(ip);</span><br><span class="line"><span class="built_in">bind</span>(socket_fd,(sockaddr*)&amp;sc_address,<span class="built_in">sizeof</span>(sc_address));</span><br><span class="line"><span class="built_in">listen</span>(socket_fd,SOMAXCONN);</span><br><span class="line"><span class="type">int</span> client_fd=<span class="built_in">accept</span>(socket_fd, (sockaddr *)&amp;sc_address, &amp;<span class="built_in">sizeof</span>(sc_address));<span class="comment">//服务器端得到了连接socket，进行数据的传输与读取</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">  ......</span><br><span class="line">  <span class="built_in">recv</span>(client_fd,buffer,<span class="built_in">sizeof</span>(buffer));</span><br><span class="line">  ......</span><br><span class="line">  <span class="built_in">send</span>(...);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此基本的socket网络就搭建好了，编译后可以在两个终端上分别运行server与client进行通讯</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wuyuxing2005.github.io">Wuyuxing</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wuyuxing2005.github.io/2026/03/05/linux-network/">https://wuyuxing2005.github.io/2026/03/05/linux-network/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wuyuxing2005.github.io" target="_blank">Wuyuxing's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/01/26/compiler_exam/" title="南京大学智软院编译原理（陈林）25秋期末回忆"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">南京大学智软院编译原理（陈林）25秋期末回忆</div></div><div class="info-2"><div class="info-item-1">很简单很简单，没作业题难，且很多难的知识点都没考到后面几道大题考得很浅如果能熟练掌握作业题考试完全能拿满分（并不是说原题） 第一章：简答题：1.编译器与解释器关系2.写出你认为最难的三个知识点…3.其他的忘了。 第三章：词法分析：根据正则表达式构建NFA，DFA，最小化DFA，画图 第四章：语法分析：SLR(1)文法，First，Follow集合给出SLR表，项集，项集转化图，判断是不是SLR文法 第五章：语法制导翻译：根据语法写出一个SDD还是SDT忘了，然后判断是什么属性、 第六章：中间代码生成：忘了 第七章：运行时环境：存储分配方式和活动记录，好像还有画活动树填空题格式，很简单 第八章：代码生成：三地址语言优化 第九章：优化：到达定值分析全部流程 </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wuyuxing</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wuyuxing2005"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-number">1.</span> <span class="toc-text">实现简单的通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BB%E6%9C%BA%E5%AD%97%E8%8A%82%E5%BA%8F%E5%92%8C%E7%BD%91%E7%BB%9C%E5%AD%97%E8%8A%82%E5%BA%8F%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">1.主机字节序和网络字节序：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-socket%E4%B8%8Esocketaddress%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">2.socket与socketaddress的创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-socket%E8%BF%9E%E6%8E%A5%E4%B8%8E%E9%80%9A%E4%BF%A1%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">3. socket连接与通信过程</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/05/linux-network/" title="linux_network">linux_network</a><time datetime="2026-03-05T03:57:54.000Z" title="发表于 2026-03-05 11:57:54">2026-03-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/26/blog_problem/" title="blog搭建中遇到的问题">blog搭建中遇到的问题</a><time datetime="2026-01-26T15:37:15.000Z" title="发表于 2026-01-26 23:37:15">2026-01-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/26/compiler/" title="南京大学智软院编译原理（陈林）复习资料">南京大学智软院编译原理（陈林）复习资料</a><time datetime="2026-01-26T15:37:15.000Z" title="发表于 2026-01-26 23:37:15">2026-01-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/26/compiler_exam/" title="南京大学智软院编译原理（陈林）25秋期末回忆">南京大学智软院编译原理（陈林）25秋期末回忆</a><time datetime="2026-01-26T15:37:15.000Z" title="发表于 2026-01-26 23:37:15">2026-01-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/24/unity-3dtouch-question/" title="unity-3dtouch-question">unity-3dtouch-question</a><time datetime="2026-01-24T10:23:47.000Z" title="发表于 2026-01-24 18:23:47">2026-01-24</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Wuyuxing</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4-b1"></script><script src="/js/main.js?v=5.5.4-b1"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script>
+(function () {
+  var bgUrl = '/img/cover.png'; 
+
+  function hide() {
+    var el = document.getElementById('site-preload');
+    if (!el) return;
+    el.classList.add('hide');
+    setTimeout(function(){ el.remove(); }, 350);
+  }
+
+  window.addEventListener('load', function () {
+    var img = new Image();
+    img.src = bgUrl;
+    if (img.complete) return hide();
+    img.onload = hide;
+    img.onerror = hide;
+  });
+})();
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-show-text.min.js" data-mobile="true" data-text="FUCK,YOU" data-fontsize="40px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
