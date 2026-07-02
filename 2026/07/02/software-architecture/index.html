@@ -1,0 +1,1162 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软件架构 | Wuyuxing's Blog</title><meta name="author" content="Wuyuxing"><meta name="copyright" content="Wuyuxing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="架构：what is software architecure?(软件架构&#x2F;软件体系结构) 定义：程序或者计算系统的体系结构是系统的一个或者多个结构，包括：  软件组件 组件的外部可见属性 它们之间的联系   系统的基本组织体现在：  组件 它们之间的互相关系 以及环境 以及支配其设计和演进的原则   概念区分：  设计(Design): 所有的体系结构都是软件设计，但不是所有的软件设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件架构">
+<meta property="og:url" content="https://wuyuxing2005.github.io/2026/07/02/software-architecture/index.html">
+<meta property="og:site_name" content="Wuyuxing&#39;s Blog">
+<meta property="og:description" content="架构：what is software architecure?(软件架构&#x2F;软件体系结构) 定义：程序或者计算系统的体系结构是系统的一个或者多个结构，包括：  软件组件 组件的外部可见属性 它们之间的联系   系统的基本组织体现在：  组件 它们之间的互相关系 以及环境 以及支配其设计和演进的原则   概念区分：  设计(Design): 所有的体系结构都是软件设计，但不是所有的软件设计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-07-02T01:30:00.000Z">
+<meta property="article:modified_time" content="2026-07-02T01:21:07.169Z">
+<meta property="article:author" content="Wuyuxing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软件架构",
+  "url": "https://wuyuxing2005.github.io/2026/07/02/software-architecture/",
+  "image": "https://wuyuxing2005.github.io/img/butterfly-icon.png",
+  "datePublished": "2026-07-02T01:30:00.000Z",
+  "dateModified": "2026-07-02T01:21:07.169Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Wuyuxing",
+      "url": "https://wuyuxing2005.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wuyuxing2005.github.io/2026/07/02/software-architecture/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软件架构',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><style>
+#site-preload{position:fixed;inset:0;background:#fff;z-index:999999;display:flex;align-items:center;justify-content:center;transition:opacity .3s ease;}
+#site-preload.hide{opacity:0;pointer-events:none;}
+#site-preload .dot{width:10px;height:10px;border-radius:50%;margin:0 6px;background:#000;animation:bounce .8s infinite alternate;}
+#site-preload .dot:nth-child(2){animation-delay:.15s;}
+#site-preload .dot:nth-child(3){animation-delay:.3s;}
+@keyframes bounce{to{transform:translateY(-10px);opacity:.4;}}
+</style>
+<div id="site-preload"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/cover.png);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Wuyuxing's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">软件架构</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">软件架构</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-02T01:30:00.000Z" title="发表于 2026-07-02 09:30:00">2026-07-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-02T01:21:07.169Z" title="更新于 2026-07-02 09:21:07">2026-07-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">软件设计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="架构："><a href="#架构：" class="headerlink" title="架构："></a>架构：</h1><h2 id="what-is-software-architecure-软件架构-软件体系结构"><a href="#what-is-software-architecure-软件架构-软件体系结构" class="headerlink" title="what is software architecure?(软件架构&#x2F;软件体系结构)"></a>what is software architecure?(软件架构&#x2F;软件体系结构)</h2><ul>
+<li><p>定义：程序或者计算系统的体系结构是系统的一个或者多个结构，包括：</p>
+<ul>
+<li>软件组件</li>
+<li>组件的外部可见属性</li>
+<li>它们之间的联系</li>
+</ul>
+</li>
+<li><p>系统的基本组织体现在：</p>
+<ul>
+<li>组件</li>
+<li>它们之间的互相关系</li>
+<li>以及环境</li>
+<li>以及支配其设计和演进的原则</li>
+</ul>
+</li>
+<li><p>概念区分：</p>
+<ul>
+<li>设计(Design):<ul>
+<li>所有的体系结构都是软件设计，但不是所有的软件设计都是体系结构</li>
+</ul>
+</li>
+<li>元素(Element):<ul>
+<li>包括部件(component)和连接件(Connectors)</li>
+</ul>
+</li>
+<li>关系(relationship):<ul>
+<li>静态：例如接口调用</li>
+<li>动态：数据流</li>
+</ul>
+</li>
+<li>结构(Structure):<ul>
+<li>结构是静态的、逻辑的，是关于系统如何构成的</li>
+</ul>
+</li>
+<li>Design 包含 architecture 包含 Structure<br>  <img src="/2026/07/02/software-architecture/image-75.png" alt="alt text" loading='lazy'></li>
+</ul>
+</li>
+</ul>
+<h2 id="what-does-a-software-architect-do-软件架构师是干啥的"><a href="#what-does-a-software-architect-do-软件架构师是干啥的" class="headerlink" title="what does a software architect do? (软件架构师是干啥的)"></a>what does a software architect do? (软件架构师是干啥的)</h2><p><img src="/2026/07/02/software-architecture/image-76.png" alt="alt text" loading='lazy'></p>
+<ul>
+<li>协调者：<ul>
+<li>在客户，技术团队，业务分析师，管理层之间架桥，对齐需求和约束</li>
+<li>管理和市场营销部分沟通</li>
+</ul>
+</li>
+<li>软件工程：<ul>
+<li>软件工程的最佳实践</li>
+</ul>
+</li>
+<li>技术专家：<ul>
+<li>精通技术领域</li>
+</ul>
+</li>
+<li>风险管理：<ul>
+<li>识别设计选型，技术落地中的潜在风险</li>
+</ul>
+</li>
+<li>其他职责：<ul>
+<li>主导架构设计，指导开发实现，确保业务目标一致</li>
+</ul>
+</li>
+</ul>
+<h2 id="Where-do-architectures-come-from"><a href="#Where-do-architectures-come-from" class="headerlink" title="Where do architectures come from?"></a>Where do architectures come from?</h2><ul>
+<li>非功能性需求(NFRs):定义系统运行的有多好<ul>
+<li>在功能性需求中很少被发现,其必须通过体系结构引出</li>
+<li>包括：<ul>
+<li>技术约束</li>
+<li>商业约束</li>
+<li>质量属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>架构攸关需求(ASRs):ASR 是会对软件架构产生重大影响的需求。</li>
+<li>质量需求(Quality Requirements):</li>
+<li>涉众(Stakeholders):</li>
+<li>组织(Organisations):</li>
+<li>业务目标(bussiness target)</li>
+<li>技术环境(Technical Environments):</li>
+</ul>
+<h2 id="Architecture-4-1-Views-体系结构-4-1-视图"><a href="#Architecture-4-1-Views-体系结构-4-1-视图" class="headerlink" title="Architecture (4+1) Views 体系结构(4+1)视图:"></a>Architecture (4+1) Views 体系结构(4+1)视图:</h2><ul>
+<li>4:<ul>
+<li>Logical View: 逻辑视图<ul>
+<li>架构中具有架构重要性的元素及其之间的关系</li>
+</ul>
+</li>
+<li>Process View:过程视图<ul>
+<li>描述系统在运⾏时的不同关系</li>
+</ul>
+</li>
+<li>Physical View:物理视图<ul>
+<li>软件部件是如何映射到硬件上的</li>
+</ul>
+</li>
+<li>Development View:开发视图<ul>
+<li>软件部件是如何在软件内部组织的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>1:<ul>
+<li>Use case scenarios:体系结构用例<ul>
+<li>四个视图共同描述的⼀个⽤例</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4+1指的是在四个视图在某一个场景下进行描述</li>
+</ul>
+<h2 id="Architectural-activities-and-process-体系结构活动和过程"><a href="#Architectural-activities-and-process-体系结构活动和过程" class="headerlink" title="Architectural activities and process:(体系结构活动和过程)"></a>Architectural activities and process:(体系结构活动和过程)</h2><h3 id="Architectural-activities"><a href="#Architectural-activities" class="headerlink" title="Architectural activities:"></a>Architectural activities:</h3><ol>
+<li>创建系统的商业案例</li>
+<li>理解需求</li>
+<li>创建和选择体系结构</li>
+<li>沟通体系结构（涉众，包括开发商）</li>
+<li>分析或评估体系结构<ul>
+<li>整体的方法论 </li>
+<li>具体技术的质量</li>
+</ul>
+</li>
+<li>实现体系结构</li>
+<li>保证和体系结构的一致性</li>
+</ol>
+<h3 id="Software-Architectural-Process"><a href="#Software-Architectural-Process" class="headerlink" title="Software Architectural Process:"></a>Software Architectural Process:</h3><p><img src="/2026/07/02/software-architecture/image-77.png" alt="alt text" loading='lazy'></p>
+<ol>
+<li>通过 StakeHolders 获取到 ASRs（架构攸关的需求）</li>
+<li>通过分析得到：<ul>
+<li>Prioritized Quality Attribute Scenarios（高优先级质量属性解决方案）</li>
+<li>Requirements，Constraints（需求和约束）</li>
+</ul>
+</li>
+<li>将上述部分，结合模式和策略，综合可以得到架构的设计</li>
+<li>根据架构的设计得到由模式决定的候选视图的示意图，之后完成文档化</li>
+<li>选择、组合视图，将文档进行进一步的评估<ul>
+<li>这一部分需要 StakeHolders 的参与</li>
+<li>也需要 Prioritized Quality Attribute Scenarios 和文档等作为参考</li>
+</ul>
+</li>
+</ol>
+<h2 id="Quality-Attributes-Tactics-质量属性与战术"><a href="#Quality-Attributes-Tactics-质量属性与战术" class="headerlink" title="Quality Attributes &amp; Tactics(质量属性与战术):"></a>Quality Attributes &amp; Tactics(质量属性与战术):</h2><h3 id="SoftWare-Requirements"><a href="#SoftWare-Requirements" class="headerlink" title="SoftWare Requirements:"></a>SoftWare Requirements:</h3><ul>
+<li><p>functional requirements(功能性需求):（其实就是用户希望你这个东西能做什么）</p>
+<ul>
+<li>功能性需求定义了系统必须做什么并强调了系统如何提供价值</li>
+<li>功能性需求意味着系统的行为</li>
+<li>功能是系统完成预期工作的能力</li>
+<li>功能在很大程度上与结构无关，因为它可以作为单个整体系统存在而没有任何内部结构</li>
+</ul>
+</li>
+<li><p>Quality requirements(质量需求):</p>
+<ul>
+<li>质量需求是整个需求的理想特性，系统应该在其功能需求之上提供这些特性</li>
+<li>质量要求是<strong>功能要求或整个产品的限定条件</strong>。</li>
+<li>如果质量属性很重要，软件架构会限制将功能分配到各种结构上</li>
+<li>NFRs(非功能需求):<ul>
+<li>包含质量属性，技术约束，商业约束</li>
+<li><strong>非功能需求或者体系结构需求是质量需求的另一种说法</strong></li>
+<li>任何决策中都要考虑非功能需求</li>
+<li>分类：<ul>
+<li>在执行过程中可观察(外部):</li>
+<li>执行期间不可观察(内部)</li>
+</ul>
+</li>
+<li>NFRs约束了限定的边界，架构就是在整个边界中找到最优解</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Constraints(约束)：</p>
+<ul>
+<li>约束是一种自由度为零的设计决策</li>
+<li>约束是已经做出的预先指定的设计决策</li>
+<li>通过接受设计决策并将其与其他受影响的设计决策进行协调，可以满足约束条件</li>
+</ul>
+</li>
+<li><p>架构中一般解决的是质量需求和约束</p>
+</li>
+<li><p>需求层面上看，质量需求&#x3D;&#x3D;非功能性需求&#x3D;&#x3D;架构需求</p>
+</li>
+</ul>
+<p><strong>ASR架构攸关需求</strong>：<br>是对系统架构有深远影响的相关需求，若缺失该需求，架构将完全被改变(⽐质量需求QA更加重要)<br>什么样的需求更可能成为ASR：越困难、越重要的<strong>非功能性需求(即质量需求)</strong>，越可能成为ASR<br><img src="/2026/07/02/software-architecture/image-120.png" alt="alt text" loading='lazy'><br>大部分都是质量需求</p>
+<h3 id="Quality-Attributes-tatics"><a href="#Quality-Attributes-tatics" class="headerlink" title="Quality Attributes &amp; tatics"></a>Quality Attributes &amp; tatics</h3><ul>
+<li>Internal vs. External Attributes(内部与外部属性):<ul>
+<li>在执行过程中可观察（外部）:系统满足其行为要求的程度如何？<ul>
+<li>例如性能，安全性 ，可用性，易用性</li>
+</ul>
+</li>
+<li>执行期间不可观察(内部)：系统的维护、集成或测试有多容易？<ul>
+<li>例如，可修改性、可移植性、可重用性、可测试性等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Modeling quality attribute scenarios(质量属性场景建模)（<strong>QAS</strong>）:<ul>
+<li>这个图一定要记住</li>
+<li><img src="/2026/07/02/software-architecture/image-78.png" alt="alt text" loading='lazy'> </li>
+<li>刺激源(Source of Stimulus)：<ul>
+<li>产生刺激的实体 或者说<strong>谁把刺激传递给了工件</strong></li>
+</ul>
+</li>
+<li>刺激(Stimulus):<ul>
+<li>发生的事件</li>
+</ul>
+</li>
+<li>工件(Artifact):<ul>
+<li>被影响，要相应的事务</li>
+</ul>
+</li>
+<li>环境(Environment):<ul>
+<li>发生事情时工件的状态</li>
+</ul>
+</li>
+<li>应对(response):<ul>
+<li>工件对刺激到来之后的响应活动</li>
+</ul>
+</li>
+<li>响应度量(Response Measure):<ul>
+<li>对刺激的响应以某种方式进行的评估</li>
+</ul>
+</li>
+<li>例如：</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Source of Stimulus</th>
+<th>Stimulus</th>
+<th>Artifact</th>
+<th>Environment</th>
+<th>Response</th>
+<th>Response Measure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检测器</td>
+<td>服务器故障</td>
+<td>系统</td>
+<td>系统正常情况下</td>
+<td>使用备份服务器，检测服务器报错</td>
+<td>评估从故障到恢复的时间不能超过某个值</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p><strong>只要定义好这 6 个元素，就能锁定架构的一个场景，之后可以用来进行架构的设计</strong></p>
+</li>
+<li><p>刺激和响应发生在一个环境中：系统正常运行、系统过载、系统受到攻击、系统网络等出现了故障</p>
+</li>
+<li><p>Quality Attributes(质量属性) :<br><strong>下面的质量属性都可以使用六元素进行场景建模：</strong></p>
+<ul>
+<li><strong>可用性 Availability</strong> ：<ul>
+<li><strong>可用性通常用系统在要求时间内可使用的比例来衡量</strong><ul>
+<li>例如：营业时间内100％可用、每周计划的停机时间不超过2个小时 </li>
+<li>可用性 vs 可靠性：<ul>
+<li>可用性指的是能够使用，但是不保证正确（服务器停机就不能使用了）</li>
+<li>可靠性是指可以稳定正确的使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>高可用性策略（如何实现高可用性）：<ul>
+<li>消除单点故障</li>
+<li>复制和故障转移</li>
+<li>自动检测并重启</li>
+</ul>
+</li>
+<li>可用性的损失的时间来源：<ul>
+<li>发现故障的时间</li>
+<li>修复故障的时间</li>
+<li>重启系统的时间</li>
+</ul>
+</li>
+<li>可用性可以使用指标：<br><img src="/2026/07/02/software-architecture/image-79.png" alt="alt text" loading='lazy'><br>六元素场景建模的例子：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Source of Stimulus</th>
+<th>Stimulus</th>
+<th>Artifact</th>
+<th>Environment</th>
+<th>Response</th>
+<th>Response Measure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检测器</td>
+<td>服务器故障</td>
+<td>系统</td>
+<td>系统正常情况下</td>
+<td>使用备份服务器，检测服务器报错</td>
+<td>评估从故障到恢复的时间不能超过某个值</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>互操纵性(Interoperability)</strong>：<ul>
+<li>互操作性是指两个或多个系统在特定环境下，通过接口有效地交换有意义信息的能力<ul>
+<li>其实就是两个系统之间能够正常交换信息进行沟通的能力。</li>
+</ul>
+</li>
+<li>互操作性层次：<ul>
+<li>语法互操作性：交换数据的能力</li>
+<li>语义互操作性：能够正确解释数据<br>六元素质量属性场景：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Source of Stimulus</th>
+<th>Stimulus</th>
+<th>Artifact</th>
+<th>Environment</th>
+<th>Response</th>
+<th>Response Measure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>车辆信息系统</td>
+<td>车辆位置信息发送</td>
+<td>交通监控系统</td>
+<td>系统知道车辆的存在</td>
+<td>解析车辆位置数据，与其他数据结合，将数据展示在google地图上</td>
+<td>车辆位置的精准度</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>可修改性(Modifiability)</strong>：<ul>
+<li>可修改性涉及变更以及进行变更所花费的时间或金钱成本，包括这种可修改性对其他功能或质量属性的影响程度<ul>
+<li>变更是有代价的！</li>
+</ul>
+</li>
+<li>四个问题：<ul>
+<li>1.有什么是可以改变的</li>
+<li>2.变化的可能性</li>
+<li>3.何时进行更改，谁进行更改</li>
+<li>4.变更的成本是什么</li>
+</ul>
+</li>
+<li>六元素场景建模的例子：</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Source of Stimulus</th>
+<th>Stimulus</th>
+<th>Artifact</th>
+<th>Environment</th>
+<th>Response</th>
+<th>Response Measure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开发者</td>
+<td>修改UI</td>
+<td>Code</td>
+<td>系统正常运行</td>
+<td>系统进行集成测试</td>
+<td>修改的时间</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>性能(performance)</strong>:<ul>
+<li>性能与时间有关，还与系统在单位时间内能做多少事情有关</li>
+<li>响应时间的两个基本影响因素：<ul>
+<li>处理时间（系统正在进行响应时）</li>
+<li>阻塞时间（系统无法响应时）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Source of Stimulus</th>
+<th>Stimulus</th>
+<th>Artifact</th>
+<th>Environment</th>
+<th>Response</th>
+<th>Response Measure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户</td>
+<td>登录请求</td>
+<td>系统</td>
+<td>正常运行</td>
+<td>处理登录信息</td>
+<td>平均处理时间</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>安全性(Security)</strong>：<ul>
+<li>衡量系统保护数据和信息免遭未授权访问的能力,同时提供对授权人员和系统的访问权限</li>
+<li>三个特征：<ul>
+<li>机密性(Confidentially) 数据和服务收到保护</li>
+<li>完整性(integrity) 数据和服务不会受到未经授权的操纵操纵</li>
+<li>可用性(Availability) 系统可供合法使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Source of Stimulus</th>
+<th>Stimulus</th>
+<th>Artifact</th>
+<th>Environment</th>
+<th>Response</th>
+<th>Response Measure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>远程的不满员工</td>
+<td>试图修改工资率</td>
+<td>系统数据</td>
+<td>正常工作</td>
+<td>系统记录审计日志</td>
+<td>数据恢复并识别出篡改来源</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>可测试性</strong>(Testability):<ul>
+<li>可以使软件通过测试来证明其故障的难易程度。</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Source of Stimulus</th>
+<th>Stimulus</th>
+<th>Artifact</th>
+<th>Environment</th>
+<th>Response</th>
+<th>Response Measure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试开发者</td>
+<td>进行测试</td>
+<td>集成测试系统</td>
+<td>正常运行</td>
+<td>得出运行结果</td>
+<td>路径覆盖率达到85%</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>易用性</strong>(Usability):<ul>
+<li>与用户完成所需任务的难易程度和系统提供的用户支持的类型有关<ul>
+<li><img src="/2026/07/02/software-architecture/image-80.png" alt="alt text" loading='lazy'></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Source of Stimulus</th>
+<th>Stimulus</th>
+<th>Artifact</th>
+<th>Environment</th>
+<th>Response</th>
+<th>Response Measure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户</td>
+<td>下载app</td>
+<td>系统</td>
+<td>系统正常状态</td>
+<td>系统让用户高效使用应用</td>
+<td>用户在2分钟内上手应用</td>
+</tr>
+</tbody></table>
+<h3 id="Strategies-vs-Tactics-vs-Patterns-vs-Style"><a href="#Strategies-vs-Tactics-vs-Patterns-vs-Style" class="headerlink" title="Strategies vs Tactics vs Patterns vs Style:"></a>Strategies vs Tactics vs Patterns vs Style:</h3><ul>
+<li>Tactics（战术） for quality attributes;<ul>
+<li><strong>战术是为了影响某个质量属性响应⽽做出的特定设计决策</strong></li>
+<li><strong>风格或模式运用战术来提供预期的收益</strong></li>
+<li><strong>⼀系列战术的集合被称为架构策略Strategy</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Architechtural-Patterns-架构模式"><a href="#Architechtural-Patterns-架构模式" class="headerlink" title="Architechtural Patterns(架构模式) :"></a>Architechtural Patterns(架构模式) :</h2><p>架构模式（Architecture Pattern）是一组<strong>架构设计决策</strong>，适用于反复出现的设计问题，并进行了参数化处理，以适应出现该问题的不同软件开发环境</p>
+<ol start="0">
+<li>最早软件开发：</li>
+</ol>
+<ul>
+<li>时代背景：硬件极其昂贵，应用于科学计算，军工计算等，交互几乎不存在；软件硬件，操作员流程强绑定，复用性很弱</li>
+<li>这一阶段的目标： <ul>
+<li><strong>先让机器稳定运行</strong></li>
+<li><strong>提高昂贵算力利用率</strong></li>
+<li>把重复计算做成制度化流程（复用性）</li>
+</ul>
+</li>
+<li>主要矛盾： 计算资源稀缺，任务正从算一次走向重复算，稳定算，规模算</li>
+</ul>
+<p><img src="/2026/07/02/software-architecture/image-83.png" alt="alt text" loading='lazy'></p>
+<ol>
+<li>主机&#x2F;终端模式：</li>
+</ol>
+<ul>
+<li><p>新约束：企业事务数字化</p>
+</li>
+<li><p>核心矛盾： 越来越多的用户需要共享同一套核心数据与事务能力</p>
+</li>
+<li><p><strong>新约束下的问题</strong>：</p>
+<ul>
+<li>无法支持大量用户持续在线访问统一数据</li>
+<li>缺少统一事务，权限与审计控制</li>
+<li>数据共享与并发访问一多，批处理思路就会失灵</li>
+</ul>
+</li>
+<li><p>中心思想：<strong>系统需要从执行任务转变到服务一群用户</strong><br><img src="/2026/07/02/software-architecture/image-81.png" alt="alt text" loading='lazy'><br>通过事务中心化把多人共享从混乱访问变成可治理的制度化系统<br>解决了“多人共享核心事务系统”，<strong>但交互与灵活性依旧很差</strong></p>
+</li>
+<li><p>优先保障：一致性，安全性，可靠性，可审计性</p>
+<ul>
+<li>主机执行几乎所有的事务逻辑，数据存储，权限控制。</li>
+<li>同一份核心数据由中心系统负责一致性</li>
+<li>权限，审计，一致性的维护都由主机负责</li>
+</ul>
+</li>
+<li><p>相对牺牲： 易用性，交互响应性，局部修改灵活性</p>
+<ul>
+<li>原因也同上。<br>本质上是强中心加弱终端换取一致性与治理能力<br><img src="/2026/07/02/software-architecture/image-85.png" alt="alt text" loading='lazy'></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>C&#x2F;S架构：</li>
+</ol>
+<ul>
+<li>新的约束： PC与GUI的普及</li>
+<li>核心矛盾： 用户开始要求更丰富，希望更快速更丰富的桌面交互</li>
+</ul>
+<p>目标就是把交互带到桌面端，借用本地算力改善体验</p>
+<p>新约束下的问题：</p>
+<ul>
+<li>因为终端太“瘦”，难以支持复杂GUI与本地交互。</li>
+<li>所有的变化都压到了中心系统，部门级快速建设很难</li>
+<li>PC算力已经可用，完全不下放逻辑变得不经济</li>
+</ul>
+<p>中心思想：<strong>把交互放到客户端，把共享数据放到服务器</strong></p>
+<p>这个终端和主机可以理解为学校的校园卡补办终端。不过实际还要更加的丑陋与原始</p>
+<p><img src="/2026/07/02/software-architecture/image-82.png" alt="alt text" loading='lazy'></p>
+<p>通过<strong>客户端做交互，服务器保数据</strong>的策略，把企业软件真正贴近了桌面用户</p>
+<ul>
+<li><p>结构：</p>
+<ul>
+<li>客户端负责UI与部分本地的逻辑，提升响应与体验</li>
+<li>服务器负责数据存储与部分公共逻辑</li>
+<li>前后端通过网络协作，形成分布式桌面计算</li>
+</ul>
+</li>
+<li><p>优先保障：易用性，交互响应性，交互体验</p>
+<ul>
+<li>客户端负责GUI与部分本地业务逻辑执行，大大简化了交互成本与提高了响应速度</li>
+</ul>
+</li>
+<li><p>相对牺牲： 可维护性，可部署性，兼容性，统一治理性</p>
+<ul>
+<li>由于客户端负责部分业务逻辑，因此将部署于版本控制问题带到了客户端。</li>
+</ul>
+</li>
+</ul>
+<p>这个选课系统可以理解为客户端版本的选课系统，可以在学生自己的电脑上安装客户端并查询了。<br><img src="/2026/07/02/software-architecture/image-86.png" alt="alt text" loading='lazy'></p>
+<p><strong>客户端如果更新的话，所有电脑的客户端都要更新，但是web就不用（分层架构）</strong></p>
+<ol start="3">
+<li>分层架构(Layered Pattern)</li>
+</ol>
+<ul>
+<li><p>新约束：web成为统一入口</p>
+</li>
+<li><p>核心矛盾：要降低部署复杂度，并把系统内部职责整理清除</p>
+</li>
+<li><p>新约束下的问题：</p>
+<ul>
+<li>客户端的安装，升级，兼容成本随着规模上升而爆炸</li>
+<li>客户端直接或强耦合访问数据层，不利于统一治理</li>
+<li>一个系统里混杂太多展示，业务和数据处理</li>
+</ul>
+</li>
+<li><p>核心思想：实现服务器内部清晰分层</p>
+</li>
+<li><p>结构：</p>
+<ul>
+<li>表示层（Presentation Layer）：负责接入与用户界面和交互,统一用户入口(浏览器)</li>
+<li>业务层（Business Layer）：处理业务规则和流程控制</li>
+<li>数据层（Data Layer）：负责数据的持久化与数据访问<br><img src="/2026/07/02/software-architecture/image-87.png" alt="alt text" loading='lazy'></li>
+</ul>
+</li>
+</ul>
+<p>通过统一入口(浏览器)和职责分层，将部署问题和维护问题同时解决<br><img src="/2026/07/02/software-architecture/image-97.png" alt="alt text" loading='lazy'></p>
+<ul>
+<li>优先保障：可维护性，可部署性，可修改性，安全性<ul>
+<li>使用浏览器统一的接入，使得客户端的安装与维护成本下降</li>
+<li>业务逻辑集中在业务层，更容易业务的统一修改</li>
+<li>客户端对数据库的访问也不再是直接或者强耦合</li>
+</ul>
+</li>
+<li>相对牺牲：极致性能，<strong>跨系统协同灵活性</strong>，快速局部自治<ul>
+<li>由于分层设计增加了系统的复杂性，可能会对性能和灵活性产生一定的影响,<strong>复杂度仍然堆积于单应用边界之内（意思就是单应用之内仍然复杂）</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>分层架构只是把一个系统内部按职责分成“表示层、业务层、数据层”等层次，但整个系统仍然是一个单体应用。随着功能越来越多，复杂度没有消失，而是继续堆在这个单体应用里面</strong></p>
+<ol start="4">
+<li>SOA: （Service-Oriented Architecture 面向服务架构）</li>
+</ol>
+<ul>
+<li>新约束： 系统数量激增</li>
+<li>核心矛盾；企业需要跨系统复用业务能力，并把端到端流程打通</li>
+</ul>
+<p><strong>一个系统如何组织-&gt;多个系统如何协作</strong></p>
+<p>其实就是学校中的各个系统，选课系统，血迹系统，体育系统，财务系统等，之间需要进行联系的时候，接口数目会爆炸，每一个系统都需要和其他的系统建立联系。因此需要对多个系统的协作进行规范</p>
+<ul>
+<li>新约束下的问题<ul>
+<li>系统之间依旧割裂，集成常靠大量点对点接口</li>
+<li>同一业务能力在不同系统中重复实现</li>
+<li>跨系统流程一变动，协调成本迅速上升(假设数据库的表结构变化，所有相关的系统接口都要进行修改)</li>
+</ul>
+</li>
+</ul>
+<p>核心思想： 从应用视角上升到服务能力视角<br><img src="/2026/07/02/software-architecture/image-88.png" alt="alt text" loading='lazy'></p>
+<p>结构：</p>
+<ul>
+<li>其他系统通过公开的服务契约来调用该系统提供的服务，而不是依赖该系统的内部实现。</li>
+<li>ESB &#x2F; 中间件负责路由、转换、编排与集成</li>
+<li>治理体系负责版本、规范、注册、权限与生命周期</li>
+</ul>
+<p>它通过“契约+ 总线+ 编排+ 治理”，把企业从孤岛系统集合拉向了能力网络<br><img src="/2026/07/02/software-architecture/image-89.png" alt="alt text" loading='lazy'></p>
+<ul>
+<li>优先保障：<ul>
+<li>互操作性，可复用性，可治理性，可组合性<ul>
+<li>通过服务化，使得不同系统之间可以更加灵活地进行协作和集成与复用</li>
+<li>通过治理体系，可以更好地管理和控制服务的生命周期和质量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相对牺牲：简单性，响应性能，轻量部署，局部演进速度<ul>
+<li>由于服务化增加了系统的复杂性，多了ESB或中间件，部署难度上升</li>
+<li>本来本地的方法调用变成了远程服务调用，中间多了路由，网络通信等，响应性能会下降</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>微服务架构 (Microservices Architecture)（详情看微服务部分）</li>
+</ol>
+<ul>
+<li>新的约束：交付频率大幅提升</li>
+<li>核心矛盾： 团队要更快迭代，但SOA 的重治理与粗粒度服务拖慢了速度<br><img src="/2026/07/02/software-architecture/image-90.png" alt="alt text" loading='lazy'></li>
+</ul>
+<p>关键词是<strong>演进速度</strong>而不是<strong>集成</strong></p>
+<p>所谓对齐，实际上就是划分业务的时候尽量按照业务种类进行划分，而不是根据技术层面进行划分。也就是说当某部分业务改变，需要改变的东西只需要再我们的团队中就能完全修改，不需要依赖其他团队。</p>
+<p><img src="/2026/07/02/software-architecture/image-98.png" alt="alt text" loading='lazy'><br>而不是<br><img src="/2026/07/02/software-architecture/image-99.png" alt="alt text" loading='lazy'></p>
+<ul>
+<li>新约束下的问题：<ul>
+<li>服务边界偏粗，不易与快速变化的产品边界对齐</li>
+<li>中心治理与总线容易形成变更瓶颈</li>
+<li>跨团队依赖多，难以实现真正的独立发布</li>
+</ul>
+</li>
+</ul>
+<p>此时的“服务”概念区别于SOA中的系统提供给其他系统的服务接口的概念，此时的服务可以理解为<strong>系统的组成单元</strong><br>把一个原本大的应用系统拆成多个小服务，每个小服务本身就是一个独立运行的<strong>小系统</strong>。</p>
+<p>但是他们都通过暴露结构&#x2F;api提供给其他调用方使用<br><img src="/2026/07/02/software-architecture/image-92.png" alt="alt text" loading='lazy'></p>
+<ul>
+<li>核心思想：服务必须更贴近业务能力、团队边界和发布节奏<br><img src="/2026/07/02/software-architecture/image-91.png" alt="alt text" loading='lazy'></li>
+</ul>
+<p><img src="/2026/07/02/software-architecture/image-93.png" alt="alt text" loading='lazy'></p>
+<ul>
+<li><p>优先保障：可部署性，可扩展性，可修改性，演进速度</p>
+</li>
+<li><p>相对牺牲：一致性(分布式使得数据一致性的复杂度上升)，运维简单性，故障定位性，全局可理解性</p>
+</li>
+</ul>
+<ol start="6">
+<li>事件驱动&#x2F; 云原生:</li>
+</ol>
+<p>事件驱动出现的原因是如果按照之前的微服务中的多个服务的同步调用，会导致一个服务影响整体的系统。但是如果改成事件驱动的异步的话就可以解耦，可扩展性和韧性也会提高。但是就会导致事件顺序更难保障，最终的一致性更加复杂</p>
+<p>云原生则是引来进行服务的自动化运行</p>
+<ul>
+<li><p>新的约束：</p>
+<ul>
+<li>系统规模与流量波动持续放大</li>
+</ul>
+</li>
+<li><p>核心矛盾：</p>
+<ul>
+<li>**同步链路（需要事件驱动）**过长、扩缩容困难、<strong>人工运维不可持续（需要云服务）</strong></li>
+</ul>
+</li>
+<li><p>新约束下的问题：</p>
+<ul>
+<li>全同步调用链会放大尾延迟和级联效应</li>
+<li>服务变多之后，发布，扩容，恢复，观测仍高度依赖人工</li>
+<li>运行能力如果不平台化，规模效应就无法形成</li>
+</ul>
+</li>
+<li><p>核心思想：异步事件与平台化运行能力，让分布式系统更加弹性，更韧性，更自动化</p>
+</li>
+</ul>
+<p><img src="/2026/07/02/software-architecture/image-94.png" alt="alt text" loading='lazy'></p>
+<ul>
+<li>优先保障：<ul>
+<li>弹性，韧性，可扩展性，可用性，自动化运维能力<ul>
+<li>消息&#x2F;流平台用来进行削峰，缓冲，提高了弹性，韧性</li>
+<li>云平台负责扩容，配置，观测，发布等，以高了自动化运维能力</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相对牺牲：<ul>
+<li>可理解性，可调试性，时序可预测性，强一致性<ul>
+<li>由于事件驱动导致的异步执行服务。使得服务执行的顺序难易预测，会出现服务状态的不一致性，只能保证最终一致性。消息&#x2F;流平台的使用会使得排查问题更加困难。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>在这个选课系统中，选课服务仅仅负责处理能不能选课，之后把各种情况（候补处理，消息通知，统计分析）发送到事件总线等待其它服务进行订阅与处理。<br>K8s平台就是云原生平台用来自动化处理。<br><img src="/2026/07/02/software-architecture/image-95.png" alt="alt text" loading='lazy'></p>
+<h3 id="patterns-vs-tactics"><a href="#patterns-vs-tactics" class="headerlink" title="patterns vs tactics"></a>patterns vs tactics</h3><ol>
+<li>战术规模较小，是对某一个质量属性的特定设计策略</li>
+<li>战术是架构模式的重要组成元素</li>
+<li>架构模式中往往包括多个战术，针对同一或者不同的质量属性</li>
+<li>架构模式和战术共同组成了软件设计的工具</li>
+</ol>
+<p>一些tactics<br><img src="/2026/07/02/software-architecture/image-130.png" alt="alt text" loading='lazy'></p>
+<h2 id="Identifying-ASRs"><a href="#Identifying-ASRs" class="headerlink" title="Identifying ASRs:"></a>Identifying ASRs:</h2><h3 id="Architecturally-Significant-Requirement-架构攸关需求"><a href="#Architecturally-Significant-Requirement-架构攸关需求" class="headerlink" title="Architecturally Significant Requirement(架构攸关需求):"></a>Architecturally Significant Requirement(架构攸关需求):</h3><ul>
+<li>概念：会对架构产生深远影响的需求</li>
+<li><strong>这底下的都是ASR</strong></li>
+</ul>
+<p>&#x2F;&#x2F;下面的部分前面部分已经有了</p>
+<ul>
+<li>functional requirements(功能性需求):（其实就是用户希望你这个东西能做什么）<ul>
+<li>功能性需求定义了系统必须做什么并强调了系统如何提供价值</li>
+<li>功能性需求意味着系统的行为</li>
+<li>功能是系统完成预期工作的能力</li>
+<li>功能在很大程度上与结构无关，因为它可以作为单个整体系统存在而没有任何内部结构</li>
+</ul>
+</li>
+<li>Quality requirements(质量需求):<ul>
+<li>质量需求是整个需求的理想特性，系统应该在其功能需求之上提供这些特性</li>
+<li>质量要求是<strong>功能要求或整个产品的限定条件</strong>。</li>
+<li>如果质量属性很重要，软件架构会限制将功能分配到各种结构上</li>
+<li>NFRs(非功能需求):<ul>
+<li>包含质量属性，技术限制，商业限制</li>
+<li><strong>非功能需求或者体系结构需求是质量需求的另一种说法</strong></li>
+<li>任何决策中都要考虑非功能需求</li>
+<li>分类：<ul>
+<li>在执行过程中可观察(外部):</li>
+<li>执行期间不可观察(内部)</li>
+</ul>
+</li>
+<li>NFRs约束了限定的边界，架构就是在整个边界中找到最优解</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Constraints(约束)：<ul>
+<li>约束是一种自由度为零的设计决策</li>
+<li>约束是已经做出的预先指定的设计决策</li>
+<li>通过接受设计决策并将其与其他受影响的设计决策进行协调，可以满足约束条件</li>
+</ul>
+</li>
+</ul>
+<p>&#x2F;&#x2F; 上面的前面部分已经有了</p>
+<p>如果要判断是不是ASR就根据上面进行判断即可</p>
+<h3 id="How-to-gather-and-identify-ASRs"><a href="#How-to-gather-and-identify-ASRs" class="headerlink" title="How to gather and identify ASRs:"></a>How to gather and identify ASRs:</h3><p>（记住下面四个东西就行）</p>
+<ol>
+<li><p>requirement Docs 需求文档：</p>
+<ul>
+<li>如果某项需求影响了关键体系结构设计决策的制定，那它就是ASR </li>
+<li><img src="/2026/07/02/software-architecture/image-102.png" alt="alt text" loading='lazy'></li>
+<li>并不是所有的需求文档都对架构有作用<ul>
+<li>大多数的需求太宽泛，不能直接知道架构<ul>
+<li><img src="/2026/07/02/software-architecture/image-100.png" alt="alt text" loading='lazy'></li>
+</ul>
+</li>
+<li>真正对架构师有用的信息，需求文档里可能没有<ul>
+<li>在收购环境中，需求文档代表的是收购方的利益，而不是开发商的利益</li>
+<li><img src="/2026/07/02/software-architecture/image-101.png" alt="alt text" loading='lazy'></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>QA Workshop (质量属性工坊（Quality Attribute Workshop）) </p>
+<ul>
+<li><img src="/2026/07/02/software-architecture/image-103.png" alt="alt text" loading='lazy'><br>通过访谈方式让利益相关者提出，合并，排序，细化质量属性场景的方法。</li>
+</ul>
+</li>
+<li><p>Bussiness goal (业务目标)<br>通过了解业务目标来收集</p>
+</li>
+<li><p>Utility tree (效用树)</p>
+</li>
+</ol>
+<h2 id="Designing-Architecture"><a href="#Designing-Architecture" class="headerlink" title="Designing Architecture:"></a>Designing Architecture:</h2><h3 id="General-Design-Strategy"><a href="#General-Design-Strategy" class="headerlink" title="General Design Strategy:"></a>General Design Strategy:</h3><ol>
+<li>抽象(Abstraction)<ul>
+<li>从复杂的现实问题中提炼出本质特征，忽略非本质细节，形成概念模型</li>
+<li><strong>帮助设计者聚焦于系统的核心功能和关键特征</strong><ul>
+<li>例如：<ul>
+<li>开发网络系统时，将不同类型的网络设备抽象成统一的网络设备类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分解(Decomposition)<ul>
+<li>将复杂的系统或者问题划分为较小的，相对独立的子系统。</li>
+<li><strong>可以降低系统复杂度，提高可维护性和扩展性</strong><ul>
+<li>例如：<ul>
+<li>酒店的定价系统分为价格计算模块，数据存储模块，用户界面模块等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分而治之(Divide &amp; Conquer)<ul>
+<li>将当问题分成小问题，分别解决小的问题，将小问题解决组合形成大的问题解决</li>
+<li><strong>降低开发难度</strong></li>
+<li>例如：<ul>
+<li>开发高并发服务器系统，将系统分为请求接收子系统，请求处理子系统等，设计每一个子系统的处理方案，组合成最终的解决方案</li>
+</ul>
+</li>
+<li>是在分解的基础上对小问题进行实现，之后合并。</li>
+</ul>
+</li>
+<li>生成与测试(Generation and Test)<ul>
+<li>通过不断的生成设计方案与不断的测试来优化设计方案</li>
+<li>帮助设计者开发过程中及时发现问题并修改</li>
+<li>例如：<ul>
+<li>设计新的算法时，先生成初步的算法方案，之后不断进行测试用例的测试，不断调整算法参数，直到算法性能和正确性得到满足</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>迭代(Iteration)<ul>
+<li>将开发过程分为多个迭代周期， 每一个周期都完成部分功能的开发测试，根据反馈与需求变化对下一个迭代开发内容进行调整</li>
+<li>使得软件在开发过程中不断进行调整</li>
+<li>例如：<ul>
+<li>开发应用时先推出基础版本，之后根据用户反馈开发新的或者调整旧的功能</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>复用(Reuse)<ul>
+<li>开发过程中使用已有的组件，方案，代码等</li>
+<li>提高开发效率与质量</li>
+<li>例如：<ul>
+<li>校园各个系统登录复用统一的校园登录认证模块进行身份确认</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="Categories-Of-design-decisions（设计决策类别）："><a href="#Categories-Of-design-decisions（设计决策类别）：" class="headerlink" title="Categories Of design decisions（设计决策类别）："></a>Categories Of design decisions（设计决策类别）：</h3><p>指的是架构师在进行设计的时候的一张决策检查清单</p>
+<p>主要是告诉架构师架构设计过程中需要在哪些地方考虑</p>
+<ol>
+<li>职责分配：决定哪些元素承担哪些功能和质量责任。</li>
+<li>协调模型：决定元素之间如何通信、同步和协作。</li>
+<li>数据模型：决定关键数据抽象、数据格式、语义、存储和转换。</li>
+<li>资源管理：决定 CPU、内存、网络、线程、队列等资源如何分配和控制。</li>
+<li>架构映射：决定模块、组件、进程、处理器、部署节点之间如何对应。</li>
+<li>绑定时机：决定变化点在设计时、编译时、部署时、启动时还是运行时确定。</li>
+<li>技术选择：决定使用哪些平台、框架、数据库、中间件和通信协议。</li>
+</ol>
+<h3 id="Architectural-drivers-架构驱动因素"><a href="#Architectural-drivers-架构驱动因素" class="headerlink" title="Architectural drivers(架构驱动因素):"></a>Architectural drivers(架构驱动因素):</h3><ol>
+<li>功能需求（Functional requirements）</li>
+<li>质量属性需求（Quality attribute requirements）</li>
+<li>约束（Constraints）</li>
+<li>所设计系统的类型（The type of system that is being designed）</li>
+<li>设计目标（Design objectives）</li>
+<li>关注点（Concerns）</li>
+</ol>
+<h3 id="Design-Concept："><a href="#Design-Concept：" class="headerlink" title="Design Concept："></a>Design Concept：</h3><p><img src="/2026/07/02/software-architecture/image-121.png" alt="alt text" loading='lazy'></p>
+<h3 id="Attribute-Driven-Design-ADD-3-0"><a href="#Attribute-Driven-Design-ADD-3-0" class="headerlink" title="Attribute-Driven Design (ADD 3.0)"></a>Attribute-Driven Design (ADD 3.0)</h3><ul>
+<li>ADD流程：<ul>
+<li>检查输入(review inputs)<ul>
+<li>设计目的</li>
+<li>主要功能</li>
+<li>质量属性场景</li>
+<li>约束</li>
+<li>关注点</li>
+<li>现有架构设计</li>
+</ul>
+</li>
+<li>选择本轮驱动因素(Select drivers)<ul>
+<li>选择对应的<strong>架构驱动因素</strong></li>
+<li>ADD要进行多轮，不可能一次就解决所有的问题。先选最核心的driver</li>
+</ul>
+</li>
+<li>选择要细化的元素(choose Elements to Refine)<ul>
+<li>第一轮通常细化整个系统</li>
+</ul>
+</li>
+<li>选择设计概念(Choose Design Concepts)<ul>
+<li>根据你选择的driver选择driver对应的设计概念</li>
+<li><img src="/2026/07/02/software-architecture/image-104.png" alt="alt text" loading='lazy'></li>
+<li>不能实凭感觉，需要根据你所选择的driver选择最合适的设计概念</li>
+</ul>
+</li>
+<li>实例化元素、分配职责、定义接口(Instantiate Elements)<ul>
+<li>将刚才提出的设计概念落实到具体元素</li>
+<li><img src="/2026/07/02/software-architecture/image-105.png" alt="alt text" loading='lazy'></li>
+</ul>
+</li>
+<li>画视图并记录决策（Sketch Views and Record Decisions）(文档化)<ul>
+<li>画出视图(后面会提到)和记录设计理由</li>
+</ul>
+</li>
+<li>分析是否满足目标（Analyze and Review）<ul>
+<li>检查当前是否满足所有的drivers，哪里不满足就重新进行新一轮的ADD</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="架构文档化-Documenting-Architecture-（ADD的Step6）"><a href="#架构文档化-Documenting-Architecture-（ADD的Step6）" class="headerlink" title="架构文档化(Documenting Architecture)（ADD的Step6）"></a>架构文档化(Documenting Architecture)（ADD的Step6）</h3><p><img src="/2026/07/02/software-architecture/image-107.png" alt="alt text" loading='lazy'></p>
+<ol>
+<li>视图views:<br>  <img src="/2026/07/02/software-architecture/image-106.png" alt="alt text" loading='lazy'></li>
+</ol>
+<ul>
+<li>模块视图(module views)：系统如何组织成实现单元：<ul>
+<li>分解视图、使用视图、泛化视图、分层视图、领域视图、数据模型视图</li>
+</ul>
+</li>
+<li>组件-连接器视图(Component-connector C&amp;C)：系统运行时元素如何交互<ul>
+<li>客户端-服务器视图、点对点视图、面向服务视图、发布-订阅视图</li>
+</ul>
+</li>
+<li>分配视图(Allocation Views)：系统与环境中的非软件结构有何关系<ul>
+<li>部署视图、安装视图、工作分配视图、其他分配视图。</li>
+</ul>
+</li>
+<li>质量视图(Quality Views)：某个质量属性如何被满足<ul>
+<li>安全视图，性能视图，可靠性视图，异常视图</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>如何选择视图：</li>
+</ol>
+<ul>
+<li>构建涉众&#x2F;视图表</li>
+<li>合并视图</li>
+<li>确定优先级与完成阶段</li>
+</ul>
+<ol start="3">
+<li>视图元素：<ul>
+<li>主要演示 : 介绍视图中的元素，关系</li>
+<li>元素介绍 ： 介绍元素，属性，关系，接口行为</li>
+<li>上下文图 ： 介绍系统与外部环境关系</li>
+<li>可变性指南：说明哪些地方可能变化，如何变化</li>
+<li>理由     ：解释为什么这样设计<br><img src="/2026/07/02/software-architecture/image-108.png" alt="alt text" loading='lazy'><br>部署模式：<br><img src="/2026/07/02/software-architecture/image-126.png" alt="alt text" loading='lazy'><br>可观测性模式：<br><img src="/2026/07/02/software-architecture/image-127.png" alt="alt text" loading='lazy'><br>通信模式：<br><img src="/2026/07/02/software-architecture/image-129.png" alt="alt text" loading='lazy'></li>
+</ul>
+</li>
+</ol>
+<p>拆分模式：<br><img src="/2026/07/02/software-architecture/image-128.png" alt="alt text" loading='lazy'></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wuyuxing2005.github.io">Wuyuxing</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wuyuxing2005.github.io/2026/07/02/software-architecture/">https://wuyuxing2005.github.io/2026/07/02/software-architecture/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wuyuxing2005.github.io" target="_blank">Wuyuxing's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/02/design-patterns/" title="设计模式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">设计模式</div></div><div class="info-2"><div class="info-item-1">一些概念： 软件模式：软件模式是将模式的一般概念应用于软件开发领域，即软件开发的总体指导思路或参照样板。 软件模式等于一定条件下的出现的问题以及解法 软件模式的三大律(Rule of Three)： 只有经过三个不同领域的系统的校验之后一个解决方法才能从候选方法升格为模式     设计模式： 定义： 设计模式是以套被反复使用，被多数人知晓的，经过分类编目的，代码设计经验的总结。   基本要素： 模式名称 问题 解决方案 效果   分类（根据目的）： 创建型模式(creational)：用来创建对象 结构型模式(strcutural)：处理类与对象组合成更大的结构 行为型模式(behavioral)：处理类与对象之间的交互与职责分配   分类(根据范围)： 类模式：类模式处理类和子类之间的关系，这些关系通过继承建立，在编译时刻就被确定下来，是属于静态的 对象模式：对象模式处理对象间的关系，这些关系在运行时刻变化，更具动态性。     面向对象的设计原则：  单一职责原则(SRP)： 类的职责要单一，不能将太多的职责放到同一个类中： 例如工厂方法模式中，抽象工厂就使得具体工厂只负责进...</div></div></div></a><a class="pagination-related" href="/2026/04/17/linux-network94/" title="(94) close流程、to_do_list延迟清理与Connection析构时机"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">(94) close流程、to_do_list延迟清理与Connection析构时机</div></div><div class="info-2"><div class="info-item-1">这篇文章记录一下我现在对连接关闭这部分代码的理解。 前面把 Connection、channel、EventLoop、Server 这一套跑通之后，我一开始对 close0() 也有一个很自然的误解：名字叫 close，那它是不是调用之后就立刻把 fd 关掉了？ 但顺着代码看完之后会发现，这里实际上分成两层：  一层是逻辑上的关闭，也就是告诉服务器“这个连接不要再用了” 一层是真正的资源释放，也就是把 channel 从 epoll 里摘掉，并在最后调用 ::close(fd)  这两层没有放在同一个时刻做，原因正是为了避免事件回调执行到一半时对象被提前析构。 先说结论：close0 不是立刻 close(fd)当前实现里： 1234void Connection::close0()&#123;    deleteCallBack(mysc-&gt;getFd());&#125;  Connection::close0() 做的事情非常克制，它并不直接调用 ::close(fd)，而是通过回调把删除连接这件事交给 Server::deleteConnection()。 也就是说，...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wuyuxing</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wuyuxing2005"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">架构：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-software-architecure-%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84-%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">what is software architecure?(软件架构&#x2F;软件体系结构)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-does-a-software-architect-do-%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E5%B8%88%E6%98%AF%E5%B9%B2%E5%95%A5%E7%9A%84"><span class="toc-number">1.2.</span> <span class="toc-text">what does a software architect do? (软件架构师是干啥的)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-do-architectures-come-from"><span class="toc-number">1.3.</span> <span class="toc-text">Where do architectures come from?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Architecture-4-1-Views-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-4-1-%E8%A7%86%E5%9B%BE"><span class="toc-number">1.4.</span> <span class="toc-text">Architecture (4+1) Views 体系结构(4+1)视图:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Architectural-activities-and-process-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%B4%BB%E5%8A%A8%E5%92%8C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.5.</span> <span class="toc-text">Architectural activities and process:(体系结构活动和过程)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Architectural-activities"><span class="toc-number">1.5.1.</span> <span class="toc-text">Architectural activities:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Software-Architectural-Process"><span class="toc-number">1.5.2.</span> <span class="toc-text">Software Architectural Process:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quality-Attributes-Tactics-%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%88%98%E6%9C%AF"><span class="toc-number">1.6.</span> <span class="toc-text">Quality Attributes &amp; Tactics(质量属性与战术):</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SoftWare-Requirements"><span class="toc-number">1.6.1.</span> <span class="toc-text">SoftWare Requirements:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quality-Attributes-tatics"><span class="toc-number">1.6.2.</span> <span class="toc-text">Quality Attributes &amp; tatics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Strategies-vs-Tactics-vs-Patterns-vs-Style"><span class="toc-number">1.6.3.</span> <span class="toc-text">Strategies vs Tactics vs Patterns vs Style:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Architechtural-Patterns-%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.7.</span> <span class="toc-text">Architechtural Patterns(架构模式) :</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#patterns-vs-tactics"><span class="toc-number">1.7.1.</span> <span class="toc-text">patterns vs tactics</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Identifying-ASRs"><span class="toc-number">1.8.</span> <span class="toc-text">Identifying ASRs:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Architecturally-Significant-Requirement-%E6%9E%B6%E6%9E%84%E6%94%B8%E5%85%B3%E9%9C%80%E6%B1%82"><span class="toc-number">1.8.1.</span> <span class="toc-text">Architecturally Significant Requirement(架构攸关需求):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-gather-and-identify-ASRs"><span class="toc-number">1.8.2.</span> <span class="toc-text">How to gather and identify ASRs:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Designing-Architecture"><span class="toc-number">1.9.</span> <span class="toc-text">Designing Architecture:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#General-Design-Strategy"><span class="toc-number">1.9.1.</span> <span class="toc-text">General Design Strategy:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Categories-Of-design-decisions%EF%BC%88%E8%AE%BE%E8%AE%A1%E5%86%B3%E7%AD%96%E7%B1%BB%E5%88%AB%EF%BC%89%EF%BC%9A"><span class="toc-number">1.9.2.</span> <span class="toc-text">Categories Of design decisions（设计决策类别）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Architectural-drivers-%E6%9E%B6%E6%9E%84%E9%A9%B1%E5%8A%A8%E5%9B%A0%E7%B4%A0"><span class="toc-number">1.9.3.</span> <span class="toc-text">Architectural drivers(架构驱动因素):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Design-Concept%EF%BC%9A"><span class="toc-number">1.9.4.</span> <span class="toc-text">Design Concept：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Attribute-Driven-Design-ADD-3-0"><span class="toc-number">1.9.5.</span> <span class="toc-text">Attribute-Driven Design (ADD 3.0)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E6%96%87%E6%A1%A3%E5%8C%96-Documenting-Architecture-%EF%BC%88ADD%E7%9A%84Step6%EF%BC%89"><span class="toc-number">1.9.6.</span> <span class="toc-text">架构文档化(Documenting Architecture)（ADD的Step6）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/design-patterns/" title="设计模式">设计模式</a><time datetime="2026-07-02T01:31:00.000Z" title="发表于 2026-07-02 09:31:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/software-architecture/" title="软件架构">软件架构</a><time datetime="2026-07-02T01:30:00.000Z" title="发表于 2026-07-02 09:30:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/17/linux-network94/" title="(94) close流程、to_do_list延迟清理与Connection析构时机">(94) close流程、to_do_list延迟清理与Connection析构时机</a><time datetime="2026-04-17T07:05:00.000Z" title="发表于 2026-04-17 15:05:00">2026-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/16/linux-network93/" title="(93) timerfd驱动的定时器队列与当前实现里的几个坑">(93) timerfd驱动的定时器队列与当前实现里的几个坑</a><time datetime="2026-04-16T09:00:00.000Z" title="发表于 2026-04-16 17:00:00">2026-04-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/24/linux-network92/" title="(92) 服务器接收与处理连接流程以及智能指针在Connection的应用">(92) 服务器接收与处理连接流程以及智能指针在Connection的应用</a><time datetime="2026-03-24T15:02:10.000Z" title="发表于 2026-03-24 23:02:10">2026-03-24</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Wuyuxing</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4-b1"></script><script src="/js/main.js?v=5.5.4-b1"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script>
+(function () {
+  var bgUrl = '/img/cover.png'; 
+
+  function hide() {
+    var el = document.getElementById('site-preload');
+    if (!el) return;
+    el.classList.add('hide');
+    setTimeout(function(){ el.remove(); }, 350);
+  }
+
+  window.addEventListener('load', function () {
+    var img = new Image();
+    img.src = bgUrl;
+    if (img.complete) return hide();
+    img.onload = hide;
+    img.onerror = hide;
+  });
+})();
+</script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

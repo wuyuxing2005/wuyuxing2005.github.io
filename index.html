@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Wuyuxing's Blog</title><meta name="author" content="Wuyuxing"><meta name="copyright" content="Wuyuxing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Wuyuxing&#39;s Blog">
+<meta property="og:url" content="https://wuyuxing2005.github.io/index.html">
+<meta property="og:site_name" content="Wuyuxing&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png">
+<meta property="article:author" content="Wuyuxing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Wuyuxing's Blog",
+  "alternateName": [
+    "wuyuxing2005.github.io"
+  ],
+  "url": "https://wuyuxing2005.github.io/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wuyuxing2005.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Wuyuxing\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><style>
+#site-preload{position:fixed;inset:0;background:#fff;z-index:999999;display:flex;align-items:center;justify-content:center;transition:opacity .3s ease;}
+#site-preload.hide{opacity:0;pointer-events:none;}
+#site-preload .dot{width:10px;height:10px;border-radius:50%;margin:0 6px;background:#000;animation:bounce .8s infinite alternate;}
+#site-preload .dot:nth-child(2){animation-delay:.15s;}
+#site-preload .dot:nth-child(3){animation-delay:.3s;}
+@keyframes bounce{to{transform:translateY(-10px);opacity:.4;}}
+</style>
+<div id="site-preload"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/cover.png);"></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/cover.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Wuyuxing's Blog</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Wuyuxing's Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/02/design-patterns/" title="设计模式">设计模式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-02T01:31:00.000Z" title="发表于 2026-07-02 09:31:00">2026-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">软件设计</a></span></div><div class="content">一些概念： 软件模式：软件模式是将模式的一般概念应用于软件开发领域，即软件开发的总体指导思路或参照样板。 软件模式等于一定条件下的出现的问题以及解法 软件模式的三大律(Rule of Three)： 只有经过三个不同领域的系统的校验之后一个解决方法才能从候选方法升格为模式     设计模式： 定义： 设计模式是以套被反复使用，被多数人知晓的，经过分类编目的，代码设计经验的总结。   基本要素： 模式名称 问题 解决方案 效果   分类（根据目的）： 创建型模式(creational)：用来创建对象 结构型模式(strcutural)：处理类与对象组合成更大的结构 行为型模式(behavioral)：处理类与对象之间的交互与职责分配   分类(根据范围)： 类模式：类模式处理类和子类之间的关系，这些关系通过继承建立，在编译时刻就被确定下来，是属于静态的 对象模式：对象模式处理对象间的关系，这些关系在运行时刻变化，更具动态性。     面向对象的设计原则：  单一职责原则(SRP)： 类的职责要单一，不能将太多的职责放到同一个类中： 例如工厂方法模式中，抽象工厂就使得具体工厂只负责进...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/02/software-architecture/" title="软件架构">软件架构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-07-02T01:30:00.000Z" title="发表于 2026-07-02 09:30:00">2026-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">软件设计</a></span></div><div class="content">架构：what is software architecure?(软件架构&#x2F;软件体系结构) 定义：程序或者计算系统的体系结构是系统的一个或者多个结构，包括：  软件组件 组件的外部可见属性 它们之间的联系   系统的基本组织体现在：  组件 它们之间的互相关系 以及环境 以及支配其设计和演进的原则   概念区分：  设计(Design): 所有的体系结构都是软件设计，但不是所有的软件设计都是体系结构   元素(Element): 包括部件(component)和连接件(Connectors)   关系(relationship): 静态：例如接口调用 动态：数据流   结构(Structure): 结构是静态的、逻辑的，是关于系统如何构成的   Design 包含 architecture 包含 Structure      what does a software architect do? (软件架构师是干啥的)  协调者： 在客户，技术团队，业务分析师，管理层之间架桥，对齐需求和约束 管理和市场营销部分沟通   软件工程： 软件工程的最佳实践   技术专家： 精通...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/04/17/linux-network94/" title="(94) close流程、to_do_list延迟清理与Connection析构时机">(94) close流程、to_do_list延迟清理与Connection析构时机</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-17T07:05:00.000Z" title="发表于 2026-04-17 15:05:00">2026-04-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux-network/">linux_network</a></span></div><div class="content">这篇文章记录一下我现在对连接关闭这部分代码的理解。 前面把 Connection、channel、EventLoop、Server 这一套跑通之后，我一开始对 close0() 也有一个很自然的误解：名字叫 close，那它是不是调用之后就立刻把 fd 关掉了？ 但顺着代码看完之后会发现，这里实际上分成两层：  一层是逻辑上的关闭，也就是告诉服务器“这个连接不要再用了” 一层是真正的资源释放，也就是把 channel 从 epoll 里摘掉，并在最后调用 ::close(fd)  这两层没有放在同一个时刻做，原因正是为了避免事件回调执行到一半时对象被提前析构。 先说结论：close0 不是立刻 close(fd)当前实现里： 1234void Connection::close0()&#123;    deleteCallBack(mysc-&gt;getFd());&#125;  Connection::close0() 做的事情非常克制，它并不直接调用 ::close(fd)，而是通过回调把删除连接这件事交给 Server::deleteConnection()。 也就是说，...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/04/16/linux-network93/" title="(93) timerfd驱动的定时器队列与当前实现里的几个坑">(93) timerfd驱动的定时器队列与当前实现里的几个坑</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-16T09:00:00.000Z" title="发表于 2026-04-16 17:00:00">2026-04-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux-network/">linux_network</a></span></div><div class="content">这篇文章记录一下我现在写到的 timer 模块。 这部分代码的目标很明确：不给每个定时任务单独开线程，而是把所有定时器统一交给 EventLoop 管理。这样定时器触发就能和网络事件一样，统一落到 reactor 的事件循环里处理。 为什么这里要用 timerfd前面网络部分已经有了 epoll + EventLoop + Channel 这一套事件分发框架。 如果定时器仍然用 sleep、轮询或者额外线程来做，就会和现有模型割裂开。相比之下，timerfd 的好处是它本质上就是一个文件描述符，可以直接被 epoll 监听。 也就是说，网络连接可读是一个事件，定时器到期同样也可以表现成一个“可读事件”。 这样做有几个直接好处：  定时器和 I&#x2F;O 事件统一进入 EventLoop 不需要为每个定时任务创建线程 触发逻辑更清晰，回调函数可以直接复用现有的事件分发思路  当前几个类的职责我现在这部分代码里主要有三个核心对象。 1. TimeStampTimeStamp 是对时间戳的简单封装，内部保存微秒级时间。 它的作用主要有两个：  表示某个定时器的到期时间 让定时器可以...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/24/linux-network92/" title="(92) 服务器接收与处理连接流程以及智能指针在Connection的应用">(92) 服务器接收与处理连接流程以及智能指针在Connection的应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-24T15:02:10.000Z" title="发表于 2026-03-24 23:02:10">2026-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux-network/">linux_network</a></span></div><div class="content">此文章写在day17 结束 服务器架构具体是mainReacto+subReactor模式（主从Reactor）handler包括Connection与Accpetor两部分处理不同的事件 几个重要类的作用 Acceptor：  用来创建监听套接字，并处理clientfd的accept操作。之后使用Server传来的回调函数创建Connection。 Connection：  包含ch与EventLoop，其作用是提供send与recv函数，将server传来的回调函数注册进ch的回调函数中，将ch注册进epoll中 Server:  newConnection函数来创建与初始化新的connection，并在Server中的哈希表Connections中用Connection对应的socketfd记录该Connection channel：  对Event的封装，是EventLoop处理的最小单位。其作用就是对监听socket与连接socket的职能进行抽象，使得loop返回的ch能够直接调用handleEvent()函数来调用回调函数CallBack  EventLoop代表一...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/24/linux-network91/" title="(91) 关于智能指针使用问题">(91) 关于智能指针使用问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-24T11:02:10.000Z" title="发表于 2026-03-24 19:02:10">2026-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux-network/">linux_network</a></span></div><div class="content">文章编写于day14finish在day14中我们使用智能指针来防止内存泄漏的问题 智能指针介绍主要使用unique_ptr来替代之前的裸指针  unique_ptr:unique_ptr是一个独占所有权的智能指针，意味着同一时间只能有一个unique_ptr指向某个对象。当unique_ptr被销毁时，它所管理的对象也会被自动销毁。这种特性使得unique_ptr非常适合用于管理资源，确保资源在不再需要时被正确释放。  对于每一个类的new出来的函数均可以使用unique_ptr来进行内存管理 需要注意的是unique_ptr不可以进行直接的拷贝传递。需要使用move函数来交接ptr的使用权。 下面的操作是不被允许的 12auto p = std::make_unique&lt;int&gt;(42);int* raw = p; 但是要注意下面的代码时允许的 12auto p = std::make_unique&lt;int&gt;(42);int* raw = p.get();  此处的raw是指向p所对应的内存的一个指针，它可以正常使用p中的具体成员与函数，但是它raw不...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/12/linux-network3/" title="(2.5) 非阻塞socket与epoll的触发机制">(2.5) 非阻塞socket与epoll的触发机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-12T11:02:10.000Z" title="发表于 2026-03-12 19:02:10">2026-03-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux-network/">linux_network</a></span></div><div class="content">在(2)中我们使用了epoll实现了I&#x2F;O复用在本篇会补充关于epoll的触发模式和socket的阻塞与非阻塞来缓解I&#x2F;O时间开销大的问题 Socket的阻塞和非阻塞：阻塞sokcet中的阻塞指的就是在进行系统调用如recv与send时，例如send，当读缓冲区满了，那么send操作就会一直阻塞在线程的这个部分，cpu不会分配时间片直到数据成功send出去 但是对于非阻塞的socket，当recv与send操作失败后只会返回一个错误，之后就继续执行下面的代码，不会被阻塞。这大大减少了时间开销。 但是要注意的就是当你发生错误后，如果不能处理错误例如轮询等等，那么就会被略过，直到下一次send&#x2F;recv再次报错。因此在这种情况下我们需要不断追踪send与recv是否恢复正常。 默认创建的socket是阻塞的以下是非阻塞式socket的创建 1int fd=socket(AF_INET,SOCK_STREAM|SOCK_NONBLOCK,0)//添加SOCK_NONBLOCK关键字   注意：监听socket和刚注册的client_socket不建议注册为...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/12/linux-network4/" title="(3) channel">(3) channel</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-12T07:14:39.000Z" title="发表于 2026-03-12 15:14:39">2026-03-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux-network/">linux_network</a></span></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/05/linux-network1/" title="(1)实现简单的通信">(1)实现简单的通信</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-05T03:57:54.000Z" title="发表于 2026-03-05 11:57:54">2026-03-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux-network/">linux_network</a></span></div><div class="content">实现简单的通信1.主机字节序和网络字节序：主机字节序指的就是小端字节序存储，网络字节序指的是大端字节序存储  规定：发送端需要将数据转主机字节序化为网络字节序，接收端要将网络字节序转化为主机字节序原因就是不同设备的存储方式不同，人为规定可以实现不同字节序的设备进行交互。  转化函数(就列举常用的)：  ip的转化： inet_pton: 十分制ip转化为网络字节序 inet_ntop: 网络字节序转化为十分制ip   端口号的转化： htons：主机端口号转化为网络字节序 ntohs：网络字节序转化为主机端口号      2.socket与socketaddress的创建 socket 包括监听sokcet与连接socket， 在服务器端所建立的并绑定socket_address的是监听socket，其作用就是监听该socket上是否有请求连接的请求到达。 在客户端所建立的是连接socket，它需要连接你想要连接的服务器的监听socket_address。   socket指的就是一个端口号和ip地址的二元对，即（port，ip） socket地址： 即该socket的具体内容 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/05/linux-network2/" title="(2)网络I/O多路复用">(2)网络I/O多路复用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-05T03:57:54.000Z" title="发表于 2026-03-05 11:57:54">2026-03-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux-network/">linux_network</a></span></div><div class="content">I&#x2F;O多路复用原因 解决一个线程一个连接的浪费大开销问题(1)中我们实现了一个最简单的socket网络通信。我们发现它只能保持和一个连接进行处理。也就是只允许一个线程&#x2F;进程处理一个连接。这未免有点太低效，并且线程的创建与销毁的开销也很大。所以我们希望使得一个线程能处理多个连接。 提升并发：一个线程能够处理多个连接，相同线程下可处理更多的事件 减少拥塞时间：默认情况下的read操作是阻塞的，即当缓冲区无数据可读时线程就会一直阻塞在这里，那么对于该线程的其他fd就无法进行处理了。（即使可以使用非阻塞read（指的是当代码执行到read时，若无数据则直接跳过read命令继续向下执行别的命令），那么也需要使用while循环进行轮询，即不断用read试探，看是否有数据，但这种轮询开销仍然会占用大量CPU资源）。于是就有了网络I&#x2F;O多路复用技术  I&#x2F;O多路复用的做法：I&#x2F;O多路复用就是让一个线程监听多个socketfd，哪个socketfd准备好了，那么内核就会通知这个线程对其进行业务处理。 常见的多路复用技术有： select与poll：...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wuyuxing</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wuyuxing2005"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/design-patterns/" title="设计模式">设计模式</a><time datetime="2026-07-02T01:31:00.000Z" title="发表于 2026-07-02 09:31:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/software-architecture/" title="软件架构">软件架构</a><time datetime="2026-07-02T01:30:00.000Z" title="发表于 2026-07-02 09:30:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/17/linux-network94/" title="(94) close流程、to_do_list延迟清理与Connection析构时机">(94) close流程、to_do_list延迟清理与Connection析构时机</a><time datetime="2026-04-17T07:05:00.000Z" title="发表于 2026-04-17 15:05:00">2026-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/16/linux-network93/" title="(93) timerfd驱动的定时器队列与当前实现里的几个坑">(93) timerfd驱动的定时器队列与当前实现里的几个坑</a><time datetime="2026-04-16T09:00:00.000Z" title="发表于 2026-04-16 17:00:00">2026-04-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/24/linux-network92/" title="(92) 服务器接收与处理连接流程以及智能指针在Connection的应用">(92) 服务器接收与处理连接流程以及智能指针在Connection的应用</a><time datetime="2026-03-24T15:02:10.000Z" title="发表于 2026-03-24 23:02:10">2026-03-24</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/3dtouch%E4%B8%8E%E6%9C%BA%E6%A2%B0%E8%87%82%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">3dtouch与机械臂开发</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/blog%E6%90%AD%E5%BB%BA%E9%97%AE%E9%A2%98/"><span class="card-category-list-name">blog搭建问题</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux-network/"><span class="card-category-list-name">linux_network</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/webserver/"><span class="card-category-list-name">webserver</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/webserver/%E4%BA%92%E6%96%A5/"><span class="card-category-list-name">互斥</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/webserver/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"><span class="card-category-list-name">线程池</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E7%A8%8B/"><span class="card-category-list-name">编译原理课程</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E7%A8%8B/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/"><span class="card-category-list-name">复习资料</span><span class="card-category-list-count">1</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/unity-3dtouch/" style="font-size: 1.5em; color: #99a9bf">unity+3dtouch</a> <a href="/tags/%E8%AF%BE%E7%A8%8B%E5%A4%8D%E4%B9%A0/" style="font-size: 1.3em; color: #99a1ac">课程复习</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 1.1em; color: #999">blog搭建</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              三月 2026
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">10</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-07-02T01:21:16.258Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Wuyuxing</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4-b1"></script><script src="/js/main.js?v=5.5.4-b1"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script>
+(function () {
+  var bgUrl = '/img/cover.png'; 
+
+  function hide() {
+    var el = document.getElementById('site-preload');
+    if (!el) return;
+    el.classList.add('hide');
+    setTimeout(function(){ el.remove(); }, 350);
+  }
+
+  window.addEventListener('load', function () {
+    var img = new Image();
+    img.src = bgUrl;
+    if (img.complete) return hide();
+    img.onload = hide;
+    img.onerror = hide;
+  });
+})();
+</script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
