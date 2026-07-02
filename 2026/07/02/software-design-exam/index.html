@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软件系统设计期末回忆与评价 | Wuyuxing's Blog</title><meta name="author" content="Wuyuxing"><meta name="copyright" content="Wuyuxing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这门课是我在三年上过最重量级的一门课无论是授课内容还是考试内容都是逆天 一门课四个老师讲，甚至有一个老师就讲一节课。。 详细设计部分的老师讲的还不错，但是架构部分一坨。全英ppt加即使翻译成中文的内容也难以理解的内容。 言归正传。 期末是全英卷子，几道简答题，加一个设计架构大题和一个详细设计大题  设计架构大题：背景是在线书城，进行微服务拆分，针对不同的要求选择合适得设计模式和对应符合的设计原则。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件系统设计期末回忆与评价">
+<meta property="og:url" content="https://wuyuxing2005.github.io/2026/07/02/software-design-exam/index.html">
+<meta property="og:site_name" content="Wuyuxing&#39;s Blog">
+<meta property="og:description" content="这门课是我在三年上过最重量级的一门课无论是授课内容还是考试内容都是逆天 一门课四个老师讲，甚至有一个老师就讲一节课。。 详细设计部分的老师讲的还不错，但是架构部分一坨。全英ppt加即使翻译成中文的内容也难以理解的内容。 言归正传。 期末是全英卷子，几道简答题，加一个设计架构大题和一个详细设计大题  设计架构大题：背景是在线书城，进行微服务拆分，针对不同的要求选择合适得设计模式和对应符合的设计原则。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-07-02T01:30:00.000Z">
+<meta property="article:modified_time" content="2026-07-02T02:18:02.272Z">
+<meta property="article:author" content="Wuyuxing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软件系统设计期末回忆与评价",
+  "url": "https://wuyuxing2005.github.io/2026/07/02/software-design-exam/",
+  "image": "https://wuyuxing2005.github.io/img/butterfly-icon.png",
+  "datePublished": "2026-07-02T01:30:00.000Z",
+  "dateModified": "2026-07-02T02:18:02.272Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Wuyuxing",
+      "url": "https://wuyuxing2005.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wuyuxing2005.github.io/2026/07/02/software-design-exam/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软件系统设计期末回忆与评价',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><style>
+#site-preload{position:fixed;inset:0;background:#fff;z-index:999999;display:flex;align-items:center;justify-content:center;transition:opacity .3s ease;}
+#site-preload.hide{opacity:0;pointer-events:none;}
+#site-preload .dot{width:10px;height:10px;border-radius:50%;margin:0 6px;background:#000;animation:bounce .8s infinite alternate;}
+#site-preload .dot:nth-child(2){animation-delay:.15s;}
+#site-preload .dot:nth-child(3){animation-delay:.3s;}
+@keyframes bounce{to{transform:translateY(-10px);opacity:.4;}}
+</style>
+<div id="site-preload"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/cover.png);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Wuyuxing's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">软件系统设计期末回忆与评价</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="post-info"><h1 class="post-title">软件系统设计期末回忆与评价</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-02T01:30:00.000Z" title="发表于 2026-07-02 09:30:00">2026-07-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-02T02:18:02.272Z" title="更新于 2026-07-02 10:18:02">2026-07-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">软件系统设计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>这门课是我在三年上过最重量级的一门课<br>无论是授课内容还是考试内容都是逆天</p>
+<p>一门课四个老师讲，甚至有一个老师就讲一节课。。</p>
+<p>详细设计部分的老师讲的还不错，但是架构部分一坨。全英ppt加即使翻译成中文的内容也难以理解的内容。</p>
+<p>言归正传。</p>
+<p>期末是全英卷子，几道简答题，加一个设计架构大题和一个详细设计大题</p>
+<ul>
+<li>设计架构大题：<br>背景是在线书城，进行<strong>微服务</strong>拆分，针对不同的要求选择合适得设计模式和对应符合的设计原则。感觉有点难</li>
+<li>详细设计大题：<br>背景记不清了，根据几个题目要求选择对应的设计模式，并画出图即可。<br>第二问讲你设计的优点。不是很难。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wuyuxing2005.github.io">Wuyuxing</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wuyuxing2005.github.io/2026/07/02/software-design-exam/">https://wuyuxing2005.github.io/2026/07/02/software-design-exam/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wuyuxing2005.github.io" target="_blank">Wuyuxing's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/02/software-architecture/" title="软件架构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">软件架构</div></div><div class="info-2"><div class="info-item-1">架构：what is software architecure?(软件架构&#x2F;软件体系结构) 定义：程序或者计算系统的体系结构是系统的一个或者多个结构，包括：  软件组件 组件的外部可见属性 它们之间的联系   系统的基本组织体现在：  组件 它们之间的互相关系 以及环境 以及支配其设计和演进的原则   概念区分：  设计(Design): 所有的体系结构都是软件设计，但不是所有的软件设计都是体系结构   元素(Element): 包括部件(component)和连接件(Connectors)   关系(relationship): 静态：例如接口调用 动态：数据流   结构(Structure): 结构是静态的、逻辑的，是关于系统如何构成的   Design 包含 architecture 包含 Structure      what does a software architect do? (软件架构师是干啥的)  协调者： 在客户，技术团队，业务分析师，管理层之间架桥，对齐需求和约束 管理和市场营销部分沟通   软件工程： 软件工程的最佳实践   技术专家： 精通...</div></div></div></a><a class="pagination-related" href="/2026/04/17/linux-network94/" title="(94) close流程、to_do_list延迟清理与Connection析构时机"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">(94) close流程、to_do_list延迟清理与Connection析构时机</div></div><div class="info-2"><div class="info-item-1">这篇文章记录一下我现在对连接关闭这部分代码的理解。 前面把 Connection、channel、EventLoop、Server 这一套跑通之后，我一开始对 close0() 也有一个很自然的误解：名字叫 close，那它是不是调用之后就立刻把 fd 关掉了？ 但顺着代码看完之后会发现，这里实际上分成两层：  一层是逻辑上的关闭，也就是告诉服务器“这个连接不要再用了” 一层是真正的资源释放，也就是把 channel 从 epoll 里摘掉，并在最后调用 ::close(fd)  这两层没有放在同一个时刻做，原因正是为了避免事件回调执行到一半时对象被提前析构。 先说结论：close0 不是立刻 close(fd)当前实现里： 1234void Connection::close0()&#123;    deleteCallBack(mysc-&gt;getFd());&#125;  Connection::close0() 做的事情非常克制，它并不直接调用 ::close(fd)，而是通过回调把删除连接这件事交给 Server::deleteConnection()。 也就是说，...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wuyuxing</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wuyuxing2005"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">认识是一个反复循环、不断深化的过程</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/software-quality-manage/" title="软件质量管理期末回忆">软件质量管理期末回忆</a><time datetime="2026-07-02T02:19:00.000Z" title="发表于 2026-07-02 10:19:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/design-patterns/" title="设计模式">设计模式</a><time datetime="2026-07-02T01:31:00.000Z" title="发表于 2026-07-02 09:31:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/software-design-exam/" title="软件系统设计期末回忆与评价">软件系统设计期末回忆与评价</a><time datetime="2026-07-02T01:30:00.000Z" title="发表于 2026-07-02 09:30:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/software-architecture/" title="软件架构">软件架构</a><time datetime="2026-07-02T01:30:00.000Z" title="发表于 2026-07-02 09:30:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/17/linux-network94/" title="(94) close流程、to_do_list延迟清理与Connection析构时机">(94) close流程、to_do_list延迟清理与Connection析构时机</a><time datetime="2026-04-17T07:05:00.000Z" title="发表于 2026-04-17 15:05:00">2026-04-17</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Wuyuxing</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4-b1"></script><script src="/js/main.js?v=5.5.4-b1"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'wuyuxing2005/wuyuxing2005.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script>
+(function () {
+  var bgUrl = '/img/cover.png'; 
+
+  function hide() {
+    var el = document.getElementById('site-preload');
+    if (!el) return;
+    el.classList.add('hide');
+    setTimeout(function(){ el.remove(); }, 350);
+  }
+
+  window.addEventListener('load', function () {
+    var img = new Image();
+    img.src = bgUrl;
+    if (img.complete) return hide();
+    img.onload = hide;
+    img.onerror = hide;
+  });
+})();
+</script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4-b1"></script></div></div></body></html>

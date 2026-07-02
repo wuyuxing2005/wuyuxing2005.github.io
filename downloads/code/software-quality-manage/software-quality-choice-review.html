@@ -1,0 +1,3000 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Wuyuxing's Blog | Wuyuxing's Blog</title><meta name="author" content="Wuyuxing"><meta name="copyright" content="Wuyuxing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2026 软件质量与管理选择题题库（含PPT课后题与相关MOOC题，共170题）                 :root {         --bg: #f4f7fb;         --card: #fff;         --text: #172033;         --muted: #687386;         --lin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wuyuxing&#39;s Blog">
+<meta property="og:url" content="https://wuyuxing2005.github.io/downloads/code/software-quality-manage/software-quality-choice-review.html">
+<meta property="og:site_name" content="Wuyuxing&#39;s Blog">
+<meta property="og:description" content="2026 软件质量与管理选择题题库（含PPT课后题与相关MOOC题，共170题）                 :root {         --bg: #f4f7fb;         --card: #fff;         --text: #172033;         --muted: #687386;         --lin">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-07-02T02:42:48.106Z">
+<meta property="article:modified_time" content="2026-07-02T02:40:41.421Z">
+<meta property="article:author" content="Wuyuxing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wuyuxing2005.github.io/img/butterfly-icon.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wuyuxing2005.github.io/downloads/code/software-quality-manage/software-quality-choice-review.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Wuyuxing\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><style>
+#site-preload{position:fixed;inset:0;background:#fff;z-index:999999;display:flex;align-items:center;justify-content:center;transition:opacity .3s ease;}
+#site-preload.hide{opacity:0;pointer-events:none;}
+#site-preload .dot{width:10px;height:10px;border-radius:50%;margin:0 6px;background:#000;animation:bounce .8s infinite alternate;}
+#site-preload .dot:nth-child(2){animation-delay:.15s;}
+#site-preload .dot:nth-child(3){animation-delay:.3s;}
+@keyframes bounce{to{transform:translateY(-10px);opacity:.4;}}
+</style>
+<div id="site-preload"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/cover.png);"></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Wuyuxing's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      2026 软件质量与管理选择题题库（含PPT课后题与相关MOOC题，共170题）
+    </title>
+    <style>
+      :root {
+        --bg: #f4f7fb;
+        --card: #fff;
+        --text: #172033;
+        --muted: #687386;
+        --line: #dce3ee;
+        --primary: #315efb;
+        --primary-soft: #edf2ff;
+        --success: #168a52;
+        --success-soft: #eaf8f1;
+        --danger: #c83d4d;
+        --danger-soft: #fff0f2;
+        --warn: #946200;
+        --warn-soft: #fff8e6;
+        --shadow: 0 16px 48px rgba(25, 45, 85, 0.11);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 10% 0%, #e7edff 0, transparent 32%),
+          radial-gradient(circle at 92% 8%, #e8f8ef 0, transparent 27%),
+          var(--bg);
+      }
+      .app {
+        width: min(980px, calc(100% - 28px));
+        margin: 28px auto 54px;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(25px, 4vw, 37px);
+        letter-spacing: -0.5px;
+      }
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: end;
+        gap: 10px;
+      }
+      .filter-box {
+        display: grid;
+        gap: 5px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      select,
+      .ghost-btn {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.85);
+        color: var(--text);
+        border-radius: 11px;
+        padding: 10px 13px;
+      }
+      .ghost-btn {
+        cursor: pointer;
+        transition: 0.18s ease;
+      }
+      .ghost-btn:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+        transform: translateY(-1px);
+      }
+      .panel {
+        overflow: hidden;
+        border: 1px solid rgba(220, 227, 238, 0.95);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: var(--shadow);
+      }
+      .status {
+        padding: 18px 22px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .status-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+      .stats strong {
+        color: var(--text);
+      }
+      .progress {
+        height: 9px;
+        margin-top: 13px;
+        border-radius: 999px;
+        background: #e9edf5;
+        overflow: hidden;
+      }
+      .progress > div {
+        height: 100%;
+        width: 0;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--primary), #708cff);
+        transition: width 0.25s ease;
+      }
+      .quiz-card {
+        padding: clamp(22px, 5vw, 42px);
+      }
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-bottom: 18px;
+        align-items: center;
+      }
+      .pill {
+        display: inline-flex;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--primary-soft);
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .pill.source {
+        color: #445b55;
+        background: #edf8f3;
+      }
+      .question {
+        margin: 0 0 24px;
+        font-size: clamp(19px, 3vw, 25px);
+        line-height: 1.65;
+      }
+      .options {
+        display: grid;
+        gap: 12px;
+      }
+      .option {
+        position: relative;
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 15px 17px;
+        border: 1.5px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+        cursor: pointer;
+        line-height: 1.65;
+        transition: 0.16s ease;
+        user-select: none;
+      }
+      .option:hover {
+        border-color: #9db0ff;
+        transform: translateY(-1px);
+      }
+      .option input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .letter {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border: 1.5px solid #bec8d8;
+        border-radius: 50%;
+        color: var(--muted);
+        background: #fff;
+        font-weight: 800;
+      }
+      .option.selected {
+        border-color: var(--primary);
+        background: var(--primary-soft);
+      }
+      .option.selected .letter {
+        color: #fff;
+        background: var(--primary);
+        border-color: var(--primary);
+      }
+      .option.correct {
+        border-color: var(--success);
+        background: var(--success-soft);
+      }
+      .option.correct .letter {
+        color: #fff;
+        background: var(--success);
+        border-color: var(--success);
+      }
+      .option.wrong {
+        border-color: var(--danger);
+        background: var(--danger-soft);
+      }
+      .option.wrong .letter {
+        color: #fff;
+        background: var(--danger);
+        border-color: var(--danger);
+      }
+      .feedback {
+        display: none;
+        margin-top: 20px;
+        padding: 16px 18px;
+        border-radius: 14px;
+        line-height: 1.75;
+      }
+      .feedback.show {
+        display: block;
+      }
+      .feedback.good {
+        color: #11653e;
+        border: 1px solid #a7dfc2;
+        background: var(--success-soft);
+      }
+      .feedback.bad {
+        color: #952e3b;
+        border: 1px solid #f0b8bf;
+        background: var(--danger-soft);
+      }
+      .feedback.warn {
+        color: var(--warn);
+        border: 1px solid #ead098;
+        background: var(--warn-soft);
+      }
+      .feedback strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        align-items: center;
+        margin-top: 26px;
+      }
+      .btn {
+        border: 0;
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.18s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .btn-secondary {
+        justify-self: start;
+        color: var(--text);
+        background: #edf0f5;
+      }
+      .btn-primary {
+        justify-self: center;
+        min-width: 150px;
+        color: #fff;
+        background: var(--primary);
+        box-shadow: 0 8px 18px rgba(49, 94, 251, 0.24);
+      }
+      .btn-next {
+        justify-self: end;
+        color: var(--primary);
+        background: var(--primary-soft);
+      }
+      .result-screen {
+        display: none;
+        padding: 48px 28px;
+        text-align: center;
+      }
+      .result-screen.show {
+        display: block;
+      }
+      .score-circle {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 22px;
+        border-radius: 50%;
+        background: conic-gradient(
+          var(--primary) var(--score-angle),
+          #e8edf5 0
+        );
+      }
+      .score-circle::after {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border-radius: 50%;
+        background: #fff;
+      }
+      .score-value {
+        position: relative;
+        z-index: 1;
+        font-size: 33px;
+        font-weight: 900;
+      }
+      .result-screen p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .result-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .tips {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+      }
+      @media (max-width: 680px) {
+        .header {
+          flex-direction: column;
+        }
+        .toolbar {
+          justify-content: flex-start;
+        }
+        .status-row {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .quiz-card {
+          padding: 22px 18px;
+        }
+        .actions {
+          grid-template-columns: 1fr 1fr;
+        }
+        .btn-primary {
+          grid-column: 1/-1;
+          grid-row: 1;
+          width: 100%;
+        }
+        .btn-secondary,
+        .btn-next {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div>
+          <h1>
+            2026 软件质量与管理选择题题库（含PPT课后题与相关MOOC题，共170题）
+          </h1>
+          <p class="subtitle">
+            支持单选和多选。点击选项后立即判定：答对会显示“回答正确”并自动进入下一题；答错会停留在当前题，查看正确答案后手动点击“下一题”。
+          </p>
+        </div>
+        <div class="toolbar">
+          <label class="filter-box">
+            <span>题目范围</span>
+            <select id="categoryFilter">
+              <option value="全部">全部类别（170题）</option>
+              <option value="Agile">Agile（17题）</option>
+              <option value="Scrum">Scrum（39题）</option>
+              <option value="XP">XP（38题）</option>
+              <option value="Kanban &amp; Lean">
+                Kanban &amp; Lean（24题）
+              </option>
+              <option value="DevOps">DevOps（12题）</option>
+              <option value="非敏捷·软件过程">非敏捷·软件过程（8题）</option>
+              <option value="非敏捷·估算计划跟踪">
+                非敏捷·估算计划跟踪（3题）
+              </option>
+              <option value="非敏捷·质量管理">非敏捷·质量管理（15题）</option>
+              <option value="非敏捷·团队工程">非敏捷·团队工程（10题）</option>
+              <option value="非敏捷·项目支持活动">
+                非敏捷·项目支持活动（4题）
+              </option>
+            </select>
+          </label>
+
+          <button id="shuffleBtn" class="ghost-btn" type="button">
+            打乱题序
+          </button>
+          <button id="resetBtn" class="ghost-btn" type="button">
+            清空记录
+          </button>
+        </div>
+      </header>
+      <section class="panel">
+        <div id="quizView">
+          <div class="status">
+            <div class="status-row">
+              <div id="positionText">第 1 题</div>
+              <div class="stats">
+                <span>已检查 <strong id="checkedCount">0</strong></span><span>正确 <strong id="correctCount">0</strong></span><span>错误 <strong id="wrongCount">0</strong></span>
+              </div>
+            </div>
+            <div class="progress"><div id="progressBar"></div></div>
+          </div>
+          <div class="quiz-card">
+            <div class="meta-row">
+              <div id="typeLabel" class="pill">单选题</div>
+              <div id="categoryLabel" class="pill source"></div>
+              <div id="sourceLabel" class="pill source"></div>
+            </div>
+            <h2 id="questionText" class="question"></h2>
+            <div id="options" class="options"></div>
+            <div id="feedback" class="feedback" role="status"></div>
+            <div class="actions">
+              <button id="prevBtn" class="btn btn-secondary" type="button">
+                上一题</button><button id="nextBtn" class="btn btn-next" type="button">
+                下一题
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="resultScreen" class="result-screen">
+          <div id="scoreCircle" class="score-circle" style="--score-angle: 0deg">
+            <span id="scoreValue" class="score-value">0%</span>
+          </div>
+          <h2>本轮练习完成</h2>
+          <p id="resultText"></p>
+          <div class="result-actions">
+            <button id="retryWrongBtn" class="btn btn-secondary" type="button">
+              只重练错题</button><button id="restartBtn" class="btn btn-primary" type="button">
+              重新练习全部
+            </button>
+          </div>
+        </div>
+      </section>
+      <div class="tips">
+        选项会在每轮练习开始时随机排列；点击或按数字键即可作答。答对自动进入下一题，答错后点击“下一题”。
+      </div>
+    </main>
+    <script>
+      const sourceQuestions = [
+        {
+          category: "Agile",
+          question:
+            '在软件项目成功的传统观点中，"不太成功的(Challenged)"项目指的是（）？',
+          options: [
+            "在开发周期某个时刻被取消的项目",
+            "按时完成、不超预算且功能符合规格的项目",
+            "已完成可运行，但超预算、未如期完成、功能少于设计规格的项目",
+            "需求始终无法确定而长期停滞的项目",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question: "敏捷观点认为，评价软件项目是否成功最重要的标准是（）？",
+          options: [
+            "按时完成且费用不超预算",
+            "为客户创造价值",
+            "功能数量符合最初设计规格",
+            "文档齐全并通过评审",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            '在"价值观—原则—实践"体系中，作为"我们在某种处境中喜欢或不喜欢某事情的根源"的是（）？',
+          options: ["价值观", "原则", "实践", "工具"],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question: "《敏捷宣言》诞生的时间和地点是（）？",
+          options: [
+            "1995年，Standish Group 总部",
+            "2001年，犹他州雪鸟滑雪山庄",
+            "2011年，精益创业运动的发起地",
+            "1990年代，ThoughtWorks 公司",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            '关于《敏捷宣言》中每条"……高于……"两侧的关系，正确的表述是（）？',
+          options: [
+            "右项毫无价值，应予以抛弃",
+            "应优先满足右项，再考虑左项",
+            "左右两项的价值完全相等",
+            "尽管右项有其价值，但更重视左项的价值",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            '材料把"设计过程充斥短期、即时的决定，而无完整规划"的典型开发模式称为（）？',
+          options: [
+            "边写边改(code and fix)",
+            "迭代式开发",
+            "计划驱动方法",
+            "螺旋式开发",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            '材料指出，"工程方法(engineering methodologies)"另一个被广泛使用的名称是（）？',
+          options: [
+            "适应性方法",
+            "计划驱动方法(plan-driven methodologies)",
+            "面向人的方法",
+            "迭代式方法",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            "文档减少只是表象，敏捷型方法相对工程型方法的两个深层本质特点是（）？",
+          options: [
+            "步骤更多、规定更严",
+            "面向过程、拒绝变化",
+            "预见性的、面向过程的",
+            "适应性而非预见性的、面向人而非面向过程的",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question: '传统正规方法"将设计与建造分离"的基本思路主要借鉴自（）？',
+          options: [
+            "制造业的流水线作业",
+            "泰勒的科学管理",
+            "土木工程等其他工程领域",
+            "精益创业方法",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            "McConnell 指出，在大型软件项目中编码和单元测试所占的比例约为（）？",
+          options: ["10%", "15%", "50%", "90%"],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            'Alistair Cockburn 在其论文中提出，软件开发中的"人"是（）？',
+          options: [
+            "可以自由替换的编程插件",
+            "与角色相比无关紧要的资源",
+            "非线性、一阶的部件",
+            "可被过程完全规范的可预见性部件",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            '某团队的程序员说："因为我重视沟通，所以我写了这份1000页的项目文档。"对照材料中的价值观与实践，下列判断最恰当的是（）？',
+          options: [
+            "写了详尽文档就证明他确实重视沟通，因为实践是价值观的表现",
+            "文档属于详尽文档，敏捷团队从不写文档不做计划，所以他违背了敏捷",
+            "可以以价值观的名义做任何事，文档未必说明他重视沟通——如果每天15分钟的交谈更有效，那份文档就不能说明这一点",
+            "价值观处在高层次，只要他声称重视沟通即可，做法本身无需评判",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            '某经理原来的6人团队都赞成用计划扑克做估算，现在他筹建一个新团队。依据"个体和互动高于流程和工具"，他最恰当的做法是（）？',
+          options: [
+            "可以向新团队建议并鼓励他们尝试计划扑克，但不强制规定",
+            "直接规定新团队必须使用计划扑克，因为这是被验证过的好实践",
+            "禁止新团队使用计划扑克，要求他们自创估算方法",
+            "把估算交给经理统一完成，团队不必参与",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            '某项目经理把项目延期归咎于"需求老是在变"，主张今后必须在开发前彻底锁定需求并禁止变更。依据材料，最贴合其逻辑分析的判断是（）？',
+          options: [
+            '在商用软件中需求变更是常态、甚至"应该变"，因为软件不可触摸，许多功能只有用过系统后才知道是否有用，一味锁定需求并不能真正解决问题',
+            "他完全正确，需求变更都是需求工程没做好造成的",
+            "只要把所有需求都固定下来并取得客户签字认可，项目就不会再有问题",
+            "需求变更与商业环境无关，把需求锁定后计划必然稳定",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            '某公司把开发者当作"可互相替换的编程插件"来管理，几年后发现优秀人才不断流失，团队真的只剩下平庸的"插件"。依据材料，最贴合的解释是（）？',
+          options: [
+            "这只是偶然的人事波动，与管理方式无关",
+            "这是一个很强的正反馈机制：把人当可互替插件，就不会把他们当独特个体对待，从而降低士气和生产率、逼走优秀人才，最终真的得到可互替的插件",
+            "这说明开发者本来就是可替换的资源，该管理方式得到了验证",
+            "人才流失只是因为薪酬太低，与是否把人当个体无关",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            "某管理者用代码行数、生产率等单一指标考核开发人员，一段时间后发现大家的指标都很漂亮，真实效能却下降了。依据材料，最准确的解释和对策是（）？",
+          options: [
+            "指标漂亮就说明效能提升了，应继续加强度量",
+            "问题在于指标选得不够多，只要再增加几个指标就能解决",
+            "软件效能本来就无法改善，是否度量都一样",
+            '度量若没有涵盖影响效能的所有重要因素，干活的人会改变工作方式去迎合指标，造成度量"失效"；对软件开发，委托式管理往往比基于度量的管理更有效',
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Agile",
+          question:
+            "某敏捷团队最终交付的软件与项目最初的计划差异明显，有人据此断定项目失败了。综合两份材料，最恰当的判断是（）？",
+          options: [
+            "衡量敏捷项目成功的是商业价值——客户得到的软件价值是否大于其投入；一个好的敏捷项目往往会建造出与最初计划不同却更好的软件",
+            "只要偏离了最初计划就是失败，这是判断项目成功与否的唯一标准",
+            "敏捷项目根本不需要计划，所以无所谓是否偏离",
+            "与计划不同说明需求工程失败，应当追究开发团队的责任",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            "Scrum 一词最早作为橄榄球术语被引入产品开发领域，是哪一年由竹内弘高与野中郁次郎提出的（）?",
+          options: ["1975 年", "1986 年", "1995 年", "2001 年"],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "Scrum 框架的三大支柱（Pillars）是（）?",
+          options: [
+            "透明、检视、适应",
+            "承诺、专注、尊重",
+            "计划、执行、回顾",
+            "迭代、增量、反馈",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "Scrum Team 的三个角色是（）?",
+          options: [
+            "项目经理、架构师、测试工程师",
+            "需求分析师、PO、Scrum Master",
+            "客户、开发人员、管理者",
+            "Product Owner、Scrum Master、Developers",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "根据 Scrum Guide 2020，Scrum Team 通常规模应为（）?",
+          options: ["5 人或更少", "10 人或更少", "15 人或更少", "20 人或更少"],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "每日 Scrum 会议（Daily Scrum）的时间盒是（）?",
+          options: ["5 分钟", "15 分钟", "30 分钟", "60 分钟"],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            '用户故事模板"作为<某类用户>，我想<做某事>，从而<获得某种价值>"中，三部分依次对应的是（）?',
+          options: [
+            "why / who / what",
+            "who / why / what",
+            "what / who / why",
+            "who / what / why",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "INVEST 原则中字母 I 代表（）?",
+          options: [
+            "Independent（独立性）",
+            "Important（重要性）",
+            "Integrated（集成性）",
+            "Iterative（迭代性）",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "关于 Product Backlog 的排序权，下列说法正确的是（）?",
+          options: [
+            "由 Scrum Master 决定",
+            "由开发团队投票决定",
+            "由 Product Owner 决定",
+            "由利益相关者联合决定",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "Ron Jeffries 提出的用户故事 3C 原则是（）?",
+          options: [
+            "Card（卡片）、Conversation（交谈）、Confirmation（确认）",
+            "Code（编码）、Commit（提交）、Check（检查）",
+            "Client（客户）、Customer（用户）、Contract（合同）",
+            "Concept（概念）、Create（创建）、Complete（完成）",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: 'Scrum 中"猪与鸡"的比喻里，"猪"对应（）?',
+          options: [
+            "客户与最终用户",
+            "管理层与赞助商",
+            "PO、Scrum Master 与开发团队",
+            "所有利益相关者",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "Scrum 的理论基础是（）?",
+          options: [
+            "理性主义与形式化方法",
+            "演绎主义与文档驱动",
+            "结构化分析与瀑布模型",
+            "经验主义与精益思维",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "计划扑克（Planning Poker）使用的常见数字序列是（）?",
+          options: [
+            "自然数列 1,2,3,4,5…",
+            "等差数列 2,4,6,8…",
+            "斐波那契数列 0,1,1,2,3,5,8,13,21…",
+            "等比数列 1,2,4,8,16…",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "当前行业通行的 Scrum Sprint 周期通常为（）?",
+          options: ["2–3 天", "约 2 周", "2 个月", "半年"],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "Scrum Guide 2020 相较 2017 版的一项关键变化是（）?",
+          options: [
+            "取消 Product Owner 角色",
+            '取消"开发团队（Development Team）"称谓，统称"Developers"',
+            "将 Sprint 周期统一延长至 4 周",
+            "新增架构师角色",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "Definition of Done（DoD）的主要作用是（）?",
+          options: [
+            '团队对"完成"的统一定义，用以判断增量是否真正可交付',
+            "规定团队成员的绩效考核标准",
+            "PO 单方面制定的验收规则",
+            "列出测试用例清单",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            "某团队严格执行 Scrum:Sprint 两周、每日站会 15 分钟、三大角色齐全;但 PO 每天给每位开发者分派具体任务并要求小时级进度汇报。下列判断最恰当的是（）?",
+          options: [
+            "完全符合 Scrum，因角色、事件、时间盒都齐全",
+            "这是 PO 的本职工作——PO 就该给开发者分派任务",
+            "只要 Sprint 目标达成，流程细节不必深究",
+            "形式齐全但违反了自管理原则，本质是微观管理",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            '某团队近 3 个 Sprint 的 Velocity 分别为 20、35、15 点，PO 据此要求团队"提高估算准确性"。下列回应最能体现对 Scrum 估算本质的理解（）?',
+          options: [
+            "延长估算会议，逐条故事拆到小时级，以追求精度",
+            "由最资深成员独立估算，避免其他人拉低精度",
+            "估算的价值不在精确预测，而在建立共同理解、暴露分歧;应分析波动背后的需求模糊与阻碍因素",
+            "放弃 Story Point，改用绝对小时数估算",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            '某团队把一个复杂故事拆成 8 个小任务交给 AI Agent，一天内"完成"全部任务（CI 通过、已合并）;下 Sprint 团队却无人能解释其中某段代码的设计意图。按 Scrum 2020 及其 AI 时代扩展，下列判断最恰当（）?',
+          options: [
+            '这违反了"透明"支柱——AI 代码未被人类理解就积累了"理解力负债";DoD 应追加"至少一名成员能解释核心设计决策"',
+            "DoD 已通过，工作即已完成",
+            "这是 Agent 时代的新常态，无需干预",
+            "应禁用所有 AI Agent，回到人工编码",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            "Sprint 进行过程中，PO 想在当前 Sprint 插入一个与 Sprint Goal 冲突的新需求。关于 Sprint 的稳定性与可协商性，下列理解最准确（）?",
+          options: [
+            "Sprint 启动后一切冻结，任何调整都违反 Scrum",
+            "PO 作为最大权威，可随时改写 Sprint Goal",
+            "Scrum Master 有权否决 PO 的任何改动",
+            'Sprint Goal 不应被单方面更改;但范围可在不破坏目标的前提下与 PO 协商，这体现了"范围/重要性/估算可协商，质量不可让步"',
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            'Sprint Review 上团队演示了完整功能、测试全绿、流程流畅;但真实用户在后续使用中反馈功能与需求不符。关于"Scrum 解决什么问题"，下列理解最准确（）?',
+          options: [
+            "Scrum 保证需求正确，因此这必然是执行层面的失误",
+            "此问题证明 Scrum 不可靠，应回到瀑布模型先把需求冻结",
+            '用户真正的需求常在看到产品后才清晰——Scrum 的短迭代+经验主义正是为此而设计;演示"完成"≠价值传递成功，下 Sprint 应基于反馈调整 Backlog',
+            "应追责 PO 未能在一开始完整定义需求",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            "传统软件工程假设:从需求到生产，同一个 bug 的修复成本随时间呈何种形态变化（）?",
+          options: ["指数增长", "保持平稳", "线性下降", "先升后降"],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: 'Kent Beck 1996 年押"变更曲线可被压平"的项目是（）?',
+          options: [
+            "福特 1990 年的 ERP 项目",
+            "克莱斯勒 C3 薪资系统（Smalltalk · 8.7 万员工）",
+            "IBM 1992 年的 OS/2",
+            "戴姆勒 2000 年的电商系统",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            "《Extreme Programming Explained》1999 年首版给出的四大价值观是（）?",
+          options: [
+            "流程、工具、个人、变化",
+            "迭代、估算、回顾、计划",
+            "交流、协作、纪律、文档",
+            "交流、简单、反馈、勇气",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            'XP 中"为了稳定可预测的开发，必要的事最终收敛到"的四项基本活动是（）?',
+          options: [
+            "需求、设计、开发、测试",
+            "计划、估算、实现、回顾",
+            "沟通、协作、构建、部署",
+            "编码、测试、倾听、设计",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            "Kent Beck 简单设计四准则按优先级排序时，第一条（最高优先级）是（）?",
+          options: [
+            "消除重复",
+            "清晰表达每一个对程序员重要的意图",
+            "最小化类和方法的数量",
+            "通过所有测试",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "TDD 一轮最小循环的阶段顺序是（）?",
+          options: [
+            "红 → 绿 → 重构",
+            "绿 → 红 → 重构",
+            "重构 → 红 → 绿",
+            "设计 → 编码 → 测试",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "在结对编程中，Driver（手握键鼠的人）的关注焦点是（）?",
+          options: [
+            "当下这个方法怎么实现最好——语法、边界、命名、测试通过",
+            "还有哪些测试没覆盖",
+            "整个方法方向是否正确",
+            "能否简化系统让当前问题自然消失",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            'Fowler 持续集成中，"提交阶段（Commit Stage）"通常应控制在的时间内是（）?',
+          options: ["≤1 分钟", "≤10 分钟", "≤30 分钟", "≤2 小时"],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            '关于 XP 的"代码集体拥有制（Collective Ownership）"，最准确的描述是（）?',
+          options: [
+            "集体拥有意味着没有规则，谁想改就改",
+            "集体拥有不需要任何配套实践即可推行",
+            '集体拥有由测试、结对、持续集成、编码标准四条绳子一起拉住，不是"无所有权"的别名',
+            '集体拥有等于"个人所有权"的反面，必须由架构师统一审批',
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "关于 CI / CD / 持续部署三者的边界，正确的描述是（）?",
+          options: [
+            "CI 自动化到生产;CD 还要手动;持续部署只剩紧急刹车",
+            "三者完全等同，只是叫法不同",
+            'CI 自动化"构建+快速测试"，主线已集成已初步验证;CD 自动化整条流水线到类生产，只剩"上生产"按钮手动;持续部署连上生产都自动，只留紧急刹车',
+            "CI 是工具，CD 是方法，持续部署是组织模式",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "Martin Fowler 关于 UML 的立场是（）?",
+          options: [
+            '提倡"草图用法"——编码前白板探索、保持简短、只画关键结构、视为草图而非终稿、讨论完即擦掉',
+            '提倡"终稿用法"——作为蓝图交给另一团队构建',
+            "要求 UML 与代码长期同步维护，否则不合规",
+            "图比代码权威，应作为系统全面信息源",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "根据持续集成讲义，主线构建坏了，团队首选的处理措施是（）?",
+          options: [
+            "立即在主线上修复，避免回滚",
+            "关闭 CI 流水线减少噪音",
+            "首选 git revert 那次提交，让主线立刻回到上一个绿色状态——把故障半径压到最小，解除对所有其他人的阻塞",
+            "把出错的开发者调离项目",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: '关于"重构（Refactoring）"，最准确的定义是（）?',
+          options: [
+            "任何对现有代码的修改都叫重构",
+            "为引入新功能而必须改造代码的过程",
+            "必须由架构师审批后才能执行的代码修改",
+            "保留外部可见行为、只改善内部结构的优化;改变可见行为的是功能变更，不是重构",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            '讲义指出"能编译"不等于"做对了事"，因此 CI 中的"自测试构建（Self-Testing Build）"应该（）?',
+          options: [
+            "只跑编译器和静态类型检查即可",
+            "构建 = 编译 + 完整自动化测试，任一测试失败整个构建变红，可加 Linter、静态分析、覆盖率",
+            "构建只检查代码风格是否统一",
+            "构建只需保证打包产物存在",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            "某团队声称在做 XP——CI 流水线天天绿灯、Sprint 仪式齐全，但坚决不写自动化测试。三个月后他们最可能撞上的局面是（）?",
+          options: [
+            "变更曲线提前压平，部署效率显著提升",
+            "CI 跑得越欢，坏代码合得越快——Fear Flywheel 启动，变更曲线悄悄回到指数形态，团队主动回避结构性改动",
+            "CI 流水线会自动检测出语义冲突，团队整体安全",
+            "TDD 与重构会因 CI 已搭好而自然涌现",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            "某 50 人团队全员严格做 TDD，使用 GitHub Actions，但所有改动都走长期 feature branch + 强制 PR 评审，功能完成才合主线。Fowler 视角下这算 CI 吗（）?",
+          options: [
+            "算，因为 TDD + 自动化构建已具备 CI 的核心要素",
+            "算，工具用什么不重要，关键看自动化程度",
+            '不算——CI 的"集成"字面意思是合到主线，判定标准是每天有没有真把代码合回主线，长期分支只是"分支上的自动化构建"',
+            "不算，因为团队规模超过 10 人，CI 不适合大团队",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            '有人主张 XP 的"简单设计 + YAGNI"实质就是"粗糙、应付了事"。最准确的判断是（）?',
+          options: [
+            "确实如此，简单等于不做设计",
+            "简单设计以重构能力 + 自动化测试套件为底气;缺这两条会退化成粗糙——简单不等于粗糙",
+            "YAGNI 反对一切抽象层和接口",
+            "简单设计就是 Code-fix 的另一种叫法",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            '某项目长期靠每周 50–60 小时加班维持进度，管理层认为这就是"敬业"。最贴合 XP 视角的判断是（）?',
+          options: [
+            "加班是高效团队的常态，应受表彰",
+            "只要每周不严格超过 40 小时就违规",
+            "长期加班是计划/范围/设计/测试出严重问题的征兆，不是救命稻草;疲劳的程序员更易破坏测试、引入回归，整体速度反而下降;正确做法是用计划游戏砍范围，用测试和集成压低返工",
+            "加班只与个人意志有关，与项目工程状态无关",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question:
+            '某新项目刚启动，架构师建议先建好数据库 schema、领域模型、缓存层、加密货币接口等"以后可能要用"的扩展点。最贴合演进式设计观的做法是（）?',
+          options: [
+            "必须先把数据库和领域模型建齐，否则后期重构成本指数级飙升",
+            "起步什么都不上，用内存结构跑最小闭环;海量数据到来时才引入数据库，业务复杂度（if-else 嵌套到第三层）到来时才引入领域模型;存疑时默认 YAGNI",
+            "按行业最佳实践直接引入完整三层架构 + 微服务",
+            '应该提前设计加密货币等"明天可能要"的扩展点，留出可逆开关',
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "关于 AI 时代 TDD 的真正价值，最贴合讲义观点的判断是（）?",
+          options: [
+            "TDD 在 AI 时代过时了——AI 自带正确性，先写测试是浪费",
+            "TDD 在 AI 时代只用于面试题，不影响实际开发",
+            'David Luhr 2024 提出:先写测试 = 把对业务的理解编码为可执行规格，AI 必须在规格约束下生成实现，从"自由发挥"变成"目标规格";同时迫使工程师在让 AI 写代码前先把需求想清楚——这恰是 TDD 在传统开发中的核心价值',
+            "TDD 让 AI 工具运行更快，是性能优化手段",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: "Kanban 最早起源于哪个国家的哪个行业（）?",
+          options: [
+            "美国汽车制造业",
+            "德国机械工业",
+            "日本电子工业",
+            "日本汽车制造业",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question:
+            '《Kanban 指南》将看板定义为"通过使用何种系统来优化流程中价值流动的策略"（）?',
+          options: [
+            "可视化、推动式",
+            "推动式、自动化",
+            "自动化、迭代式",
+            "可视化、拉动式",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question:
+            "2003 年出版《精益软件开发:敏捷工具箱》、把丰田精益原则系统性引入软件开发的作者是（）?",
+          options: [
+            "David J. Anderson",
+            "Poppendieck 夫妇",
+            "Corey Ladas",
+            "大野耐一",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question:
+            "David J. Anderson 出版里程碑著作《Kanban: Successful Evolutionary Change for Your Technology Business》的年份是（）?",
+          options: ["2003 年", "2007 年", "2010 年", "2020 年"],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: "Kanban Method 六大实践中，下列哪一项不属于（）?",
+          options: ["可视化", "限制在制品", "显式化策略", "固定迭代节奏"],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: 'Kanban 中"工作流的定义"（DoW）指的是（）?',
+          options: [
+            "Definition of Workflow",
+            "Definition of Done",
+            "Definition of Want",
+            "Day of Work",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: 'Kanban Guides 中"产能（Throughput）"的定义是（）?',
+          options: [
+            "每单位时间内完成的工作项数量",
+            "已开始但未完成的工作项数量",
+            "工作项从开始到当前时刻所经过的时间",
+            "85% 工作项的最长完成时间",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question:
+            '关于"周期时间（Cycle Time）"与"交付时间（Lead Time）"的差异，材料中正确的说法是（）?',
+          options: [
+            "周期时间一定大于交付时间",
+            "两者完全等同",
+            "交付时间通常还包括需求提出到启动前的等待时间",
+            "周期时间统计未完成的任务，交付时间统计已完成的任务",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: "精益思想的演化顺序（从早到晚）正确的是（）?",
+          options: [
+            "丰田 TPS → 福特流水线 → Poppendieck",
+            "福特流水线 → 丰田 TPS → Poppendieck",
+            "Poppendieck → 丰田 TPS → 福特流水线",
+            "福特流水线 → Poppendieck → 丰田 TPS",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: '关于"自働化"，下列说法正确的是（）?',
+          options: [
+            '就是"自动化"的别字',
+            "强调机器完全自主，不需要人参与",
+            "英文翻译为 automation",
+            '是和制汉字，比"自動化"多一个"亻"旁，对应 autonomation',
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: "Poppendieck 在精益软件开发上的核心贡献是（）?",
+          options: [
+            '同构映射:把"库存"翻译成"在制品（WIP）"',
+            "提出 Kanban 六大实践",
+            "发明可视化看板",
+            "提出 Scrumban",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: "软件七种浪费中不包括下列哪一项（）?",
+          options: ["部分完成的工作", "任务切换", "过度沟通", "重新学习"],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: '精益"推迟决策"原则中提到的关键概念是（）?',
+          options: [
+            "最早决定时刻（Earliest Commitment Moment）",
+            "最后责任时刻（Last Responsible Moment）",
+            "迭代决策时刻",
+            "批量决策时刻",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question:
+            "某公司发布流水线 CI 红灯了，工程师为了赶发版用 `--no-verify` 跳过检查直接合并。按精益视角最贴切的判断是（）?",
+          options: [
+            "这是合理的工程权衡，因为快速交付是第一原则",
+            '这违反了内建质量中"自働化"对应的停线权——红灯即应阻塞合并',
+            '这违反了"尊重人"——不该让 CI 阻塞工程师',
+            '这违反了"创建知识"——应该先开个回顾会议',
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question:
+            "某 Kanban 团队的瓶颈列堆积了 8 张卡，团队 6 人，每天加班赶工依然完不成。最贴合材料原则的应对是（）?",
+          options: [
+            "把瓶颈列 WIP 上限调到约 4，停止往里推工作，先疏通瓶颈",
+            "临时绕开 WIP 限制，把卡片放进快速通道",
+            "把瓶颈列拆给前面流程的空闲工人",
+            "让所有人加班直到追平",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question:
+            '团队反思会上有人提议:"开发已经很快了，但测试总是积压。我们应给开发团队加更多 KPI 提升速度。"按精益视角最贴切的判断是（）?',
+          options: [
+            "对，开发越快，整体越快",
+            "对，KPI 是局部优化的好工具",
+            "错，局部最优 ≠ 全局最优;开发更快只会让测试队列更长，整体仍慢",
+            "错，应取消测试这一环节",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question:
+            '某团队把 Kanban 当作"待办列表的电子化"——每张卡有人写有人做，但没有 WIP 限制、没有显式策略、也没有反馈会议。下列判断最准确的是（）?',
+          options: [
+            "这就是 Kanban，因为 Kanban 没有强制角色和会议",
+            '这只是看板的"形"，缺了"限制 WIP""显式化策略""反馈循环"等核心实践，称不上 Kanban 方法',
+            "这是 Scrumban，因为只用了部分 Kanban 实践",
+            "这违反了 Scrum，因为没有 Sprint 计划",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "产品负责人的核心职责是？",
+          options: [
+            "主持每日站会",
+            "管理 Product Backlog",
+            "解决技术难题",
+            "制定团队 KPI",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "跨职能团队的关键特征是？",
+          options: [
+            "成员都是全栈工程师",
+            "具备端到端交付能力",
+            "定期轮换岗位",
+            "使用统一开发工具",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "以下哪个事件不属于 Scrum 五大事件？",
+          options: [
+            "Sprint Planning",
+            "需求评审会",
+            "Daily Scrum",
+            "Sprint Retrospective",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "Scrum 中“猪与鸡”的比喻主要说明什么？",
+          options: [
+            "团队饮食管理",
+            "利益相关者的参与程度",
+            "敏捷估算方法",
+            "动物角色扮演",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "用户故事地图主要解决传统 Backlog 的什么问题？",
+          options: [
+            "全局视角缺失",
+            "需求数量过多",
+            "技术实现复杂",
+            "测试覆盖率不足",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "故事点（Story Point）的估算基于什么原则？",
+          options: [
+            "绝对时间单位（如小时）",
+            "相对工作量比较",
+            "代码行数预测",
+            "任务复杂度评分",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "“金发女孩”估算技术主要用于什么？",
+          options: [
+            "调整工作项到合适大小",
+            "确定优先级顺序",
+            "分配开发任务",
+            "评估代码质量",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "行为驱动开发（BDD）是从哪种开发方法演变而来的？",
+          options: [
+            "瀑布模型",
+            "测试驱动开发（TDD）",
+            "极限编程（XP）",
+            "Scrum",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            "某团队使用计划扑克估算时，对“支付功能”的估算差异极大（5、8、13），最可能的原因是？",
+          options: [
+            "团队成员能力差异",
+            "会议时间安排不合理",
+            "扑克牌工具使用错误",
+            "需求理解不一致",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "验收标准的正确格式是？",
+          options: [
+            "When → Then → Given",
+            "Then → Given → When",
+            "Given → When → Then",
+            "When → Given → Then",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            "在 Scrum 框架中，哪个事件对一个月的 Sprint 设置了最多 8 小时的时间盒？",
+          options: [
+            "Sprint Retrospective",
+            "Daily Scrum",
+            "Sprint Planning",
+            "Sprint Review",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "根据 Scrum Guide 2020，Daily Scrum 的核心关注点应是？",
+          options: [
+            "轮流报告个人昨天的工作细节",
+            "检查 Sprint 进度并识别障碍",
+            "讨论技术实现方案",
+            "更新燃尽图",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "SAFe 框架中协调多个团队同步交付的核心机制是？",
+          options: [
+            "Scrum of Scrums",
+            "Daily Scrum",
+            "Agile Release Train（ART）",
+            "PI Objectives",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question:
+            "根据 Scrum 价值观，当发现 Sprint Goal 无法完成时，团队最应该展现的是？",
+          options: [
+            "隐瞒进度风险",
+            "要求延长 Sprint",
+            "降低质量标准",
+            "及时透明沟通",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "有效的 Sprint 演示应该避免什么？",
+          options: [
+            "展示实际可运行的代码",
+            "详细解释实现技术细节",
+            "聚焦核心业务价值",
+            "获取利益相关者反馈",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "LeSS 框架与 SAFe 的核心区别在于？",
+          options: [
+            "保持单产品 Backlog，不添加管理层级",
+            "引入 Release Train Engineer 角色",
+            "要求所有团队使用相同技术栈",
+            "强制采用测试驱动开发",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "有效的 Sprint Retrospective 应该聚焦于什么？",
+          options: [
+            "追究任务未完成的责任",
+            "制定下个 Sprint 的详细计划",
+            "聚焦改进",
+            "评审产品功能实现",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "在 Scrum 角色职责划分中，谁负责最大化产品价值？",
+          options: [
+            "Product Owner",
+            "Scrum Master",
+            "Development Team",
+            "Stakeholder",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Scrum",
+          question: "根据 Scrum 指南，一个 Sprint 的最大时长是？",
+          options: ["1 周", "2 周", "1 个月", "6 周"],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "以下哪项不属于极限编程（XP）的核心价值观？",
+          options: [
+            "交流（Communication）",
+            "简单（Simplicity）",
+            "勇气（Courage）",
+            "透明（Transparent）",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "XP 中持续集成的最佳实践频率是？",
+          options: ["每周一次", "每三天一次", "几小时内最多一天", "每月一次"],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "XP 要求客户编写哪类测试？",
+          options: ["单元测试", "功能测试", "压力测试", "随机测试"],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "以下哪项是 XP“简单设计”的核心原则？",
+          options: [
+            "预测未来需求扩展",
+            "采用最新技术框架",
+            "遵循企业架构规范",
+            "消除所有逻辑重复",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "XP 中“结对编程”的主要作用是？",
+          options: [
+            "降低人力成本",
+            "统一编码风格",
+            "实时设计评审",
+            "缩短开发周期",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "极限编程（XP）倡导的设计策略是？",
+          options: [
+            "前期详细架构设计",
+            "基于 UML 的完整建模",
+            "演进式设计",
+            "瀑布模型分阶段设计",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "简单设计的核心准则不包括哪一项？",
+          options: [
+            "通过所有测试",
+            "消除重复代码",
+            "清晰表达意图",
+            "最大化代码复用",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "以下哪项属于持续集成的核心实践？",
+          options: [
+            "每天向主线提交代码并触发自动化构建",
+            "每周合并一次特性分支到主线",
+            "仅在生产环境执行端到端测试",
+            "手动部署到类生产环境",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "重构与临时调整的本质区别是？",
+          options: [
+            "重构需要编写新功能",
+            "临时调整会优化代码结构",
+            "重构在测试保护下进行",
+            "临时调整需要更新文档",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "Martin Fowler 对架构设计的建议体现了什么？",
+          options: [
+            "所有系统首日必须使用数据库",
+            "前期必须设计领域模型",
+            "禁止简化已部署的架构",
+            "平衡 YAGNI 与合理技术预见",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "当系统出现架构缺陷时，XP 提倡的做法是？",
+          options: [
+            "追加文档说明",
+            "立即重构代码",
+            "暂停发布计划",
+            "增加测试用例",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "XP 中“计划游戏”的核心目标是？",
+          options: [
+            "制定五年技术路线",
+            "精确估算开发成本",
+            "定义完整需求文档",
+            "平衡业务与技术决策",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "以下哪项是“代码集体所有制”的前提条件？",
+          options: [
+            "统一的编码标准",
+            "严格的代码审查",
+            "模块化系统架构",
+            "自动化部署流水线",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "XP 方法认为测试的主要长期价值是？",
+          options: [
+            "降低开发成本",
+            "提升代码性能",
+            "延长系统生命周期",
+            "减少沟通成本",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "重构过程中使用的代码质量扫描工具是？",
+          options: ["JUnit", "Git", "SonarQube", "Docker"],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "持续集成最初要解决的核心问题是？",
+          options: [
+            "代码审查效率低下",
+            "长期分支导致的集成地狱",
+            "单元测试覆盖率不足",
+            "生产环境部署失败",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "简单设计的“消除重复”准则直接对应哪项原则？",
+          options: [
+            "DRY 原则（Don't Repeat Yourself）",
+            "KISS 原则（Keep It Simple）",
+            "SOLID 原则",
+            "ACID 原则",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "XP",
+          question: "持续集成对重构的关键支撑是？",
+          options: [
+            "强制代码格式统一",
+            "提供自动化测试安全网",
+            "降低数据库迁移频率",
+            "减少版本控制系统使用",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: "Kanban 与 Scrum 在时间规划上的核心差异是？",
+          options: [
+            "Kanban 要求每日站会而 Scrum 不需要",
+            "Scrum 采用拉动系统而 Kanban 采用推送系统",
+            "Scrum 使用固定迭代周期而 Kanban 持续流动",
+            "Kanban 要求每两周一次评审而 Scrum 随时交付",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: "拉动系统（Pull System）在 Kanban 中的体现是？",
+          options: [
+            "项目经理主动分配任务给开发人员",
+            "下游阶段空闲时拉取上游已完成的工作项",
+            "根据客户优先级强制插入新任务",
+            "自动化工具定期推送待处理任务",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: "Kanban 系统中设置 WIP 限制的主要目的是？",
+          options: [
+            "防止多任务过载并优化流动效率",
+            "强制团队加班完成积压任务",
+            "统计每个成员的工作量用于绩效考核",
+            "限制团队接触敏感项目信息",
+          ],
+          answers: [0],
+          source: "既有题库",
+        },
+        {
+          category: "Kanban & Lean",
+          question: "在硬币传递游戏中，三轮规则的设计意图是演示什么？",
+          options: [
+            "自动化工具对交付速度的影响",
+            "团队规模与生产效率的正比关系",
+            "代码审查对质量提升的作用",
+            "WIP 限制对交付周期的影响",
+          ],
+          answers: [3],
+          source: "既有题库",
+        },
+        {
+          category: "DevOps",
+          question: "2009 年 DevOps 发展历程中的关键里程碑事件是？",
+          options: [
+            "《凤凰项目》出版",
+            "根特 DevOpsDays 大会",
+            "Docker 容器技术发布",
+            "Kubernetes 开源",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "DevOps",
+          question: "DevSecOps 的核心实践“安全左移”指的是？",
+          options: [
+            "将安全团队办公位置调整到开发团队左侧",
+            "优先处理左侧看板列的安全任务",
+            "在开发早期阶段集成安全实践",
+            "使用左侧滑动菜单隐藏安全配置",
+          ],
+          answers: [2],
+          source: "既有题库",
+        },
+        {
+          category: "DevOps",
+          question: "以下哪项是基础设施即代码（IaC）的典型工具？",
+          options: ["Jenkins", "Terraform", "Selenium", "Prometheus"],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "DevOps",
+          question: "DORA 指标中反映交付效率的关键指标是？",
+          options: ["变更失败率", "变更前置时间", "平均恢复时间", "用户满意度"],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "DevOps",
+          question: "金丝雀发布（Canary Deployment）的核心特征是？",
+          options: [
+            "需要双倍计算资源",
+            "渐进式流量迁移验证",
+            "完全自动化回滚机制",
+            "仅适用于微服务架构",
+          ],
+          answers: [1],
+          source: "既有题库",
+        },
+        {
+          category: "非敏捷·软件过程",
+          source: "PPT第二讲",
+          question: "“Measure twice, cut once”描述的是下述哪个软件开发场景：",
+          options: ["软件设计", "代码评审", "需求开发", "V&V"],
+          answers: [1],
+        },
+        {
+          category: "非敏捷·软件过程",
+          source: "PPT第二讲",
+          question:
+            "整体来看，我们可以把软件的发展分为三大阶段，以下不属于三大主要阶段的是：",
+          options: [
+            "软硬件一体化",
+            "网络化和服务化",
+            "云计算化和云原生",
+            "软件成为独立产品",
+          ],
+          answers: [2],
+        },
+        {
+          category: "非敏捷·软件过程",
+          source: "PPT第二讲",
+          question: "以下描述中，不属于软件开发本质困难或者本质挑战的是：",
+          options: ["质量难题", "复杂性", "不可见", "一致性"],
+          answers: [0],
+        },
+        {
+          category: "非敏捷·软件过程",
+          source: "PPT第二讲",
+          question: "以下描述中，哪一种实践是软硬件一体化阶段的典型实践：",
+          options: [
+            "Code and Fix",
+            "迭代式开发",
+            "瀑布生命周期模型",
+            "成熟度模型",
+          ],
+          answers: [0],
+        },
+        {
+          category: "非敏捷·估算计划跟踪",
+          source: "PPT第四讲",
+          question: "下述关于WBS的描述中，哪些说法不正确的？",
+          options: [
+            "WBS应该对应OBS",
+            "WBS提供了范围管理的基础",
+            "WBS工作分解最底层的要素是实现目标的充分必要条件",
+            "WBS分解的时候，同一层不能应用不同标准",
+          ],
+          answers: [0],
+        },
+        {
+          category: "非敏捷·估算计划跟踪",
+          source: "PPT第四讲",
+          question: "下述关于EVM的描述中，哪些说法不正确的？",
+          options: [
+            "EVM不适用于质量管理",
+            "EVM的中级实现中引入成本信息",
+            "EVM高度依赖估算准确",
+            "EVM可以适应需求变更",
+          ],
+          answers: [1],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "关于PSP质量管理策略，下列说法中正确的是：",
+          options: [
+            "用缺陷管理替代质量管理，既有必要性，也有合理性",
+            "基本无缺陷的开发是通过开展高质量的评审来实现的",
+            "经过训练，评审是所有消除缺陷的手段当中最高效的",
+            "PSP质量策略主要解决的是外部质量，而非内部质量",
+          ],
+          answers: [0, 1, 2],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "关于DRL，下列说法中不正确的是：",
+          options: [
+            "这是一种模块级开发中质量控制的指标",
+            "DRL以单元测试每小时发现缺陷率作为基准，考察上游其他缺陷消除阶段的消除效率",
+            "DRL以单元测试发现的缺陷个数作为基准，考察上游其他缺陷消除阶段消除缺陷的效率",
+            "DRL只能预测，不能度量",
+          ],
+          answers: [2, 3],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "关于PQI，下列说法中不正确的是：",
+          options: [
+            "PQI表征模块级别开发中的过程规范化程度",
+            "PQI越高越好，可以充分保障质量",
+            "PQI越低越好",
+            "PQI不能用作质量规划",
+          ],
+          answers: [1, 2, 3],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "关于Yield，下列说法中正确的是：",
+          options: [
+            "Yield可以辅助判断模块开发质量",
+            "Yield可以提供过程改进的依据",
+            "Yield区分为Process Yield和Phase Yield",
+            "Yield只能预测，不能度量",
+          ],
+          answers: [0, 1, 2],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "关于Humphrey梳理的Quality Journey，下列说法中正确的是：",
+          options: [
+            "Quality Journey中列出的步骤可以在适当的时候更换顺序",
+            "由于需求是一切工程活动的基础，因此加强需求开发应该是Quality Journey早期的必备步骤",
+            "Quality Journey仍然仅仅是在“用缺陷管理替代质量管理”这一基本策略之下进行讨论",
+            "Quality Journey中测试应该先于评审得到贯彻和改善",
+          ],
+          answers: [3],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question:
+            "下述关于PSP四大设计模板和UML典型设计图的描述中完全正确的是：",
+          options: [
+            "OST在UML中没有对应的设计图",
+            "UML中的类结构以及类之间的关系，在PSP四大设计模板中无法体现",
+            "LST在UML中可以通过类图来体现",
+            "FST在UML中可以通过类图来体现",
+          ],
+          answers: [3],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "下列关于各种设计验证手段的描述中正确的是：",
+          options: [
+            "执行表是唯一一种提供全面设计验证的手段",
+            "跟踪表是唯一一种提供全面设计验证的手段",
+            "受限于手工方式，都易于出错",
+            "符号化执行不适合复杂算法",
+          ],
+          answers: [2],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "一个完全正确的状态机应该满足：",
+          options: [
+            "没有死循环和陷阱",
+            "状态转化条件满足正交性",
+            "状态转化条件满足完整性",
+            "状态转化条件满足独立性",
+          ],
+          answers: [0, 1, 2],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "下述关于质量的描述中，哪些说法不正确的？",
+          options: [
+            "质量是一种多重属性的组合",
+            "最终用户一般不能感知内部质量",
+            "安全和保密一般不是质量要素",
+            "质量与主观感受有关",
+          ],
+          answers: [2],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "下述关于质量控制指标，哪些说法正确？",
+          options: [
+            "A/FR应该是越高越好",
+            "Yield是一种精确度量模块质量的手段",
+            "评审活动应该早于编译或者测试活动而开展",
+            "PQI只能事后统计，不能用于指导质量计划",
+          ],
+          answers: [2],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "PPT第五讲",
+          question: "下述设计验证手段的描述，哪些是正确的？",
+          options: [
+            "符号化执行容易引入人为错误",
+            "状态机验证是唯一一种提供一般意义的上的正确性检验的验证手段",
+            "执行表对设计缺陷的验证能力强于跟踪表",
+            "正确性检验是唯一可靠的设计验证手段",
+          ],
+          answers: [0],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question: "下面描述属于典型客户需求的是：",
+          options: ["客户期望", "预算限制", "法律法规限制", "系统功能描述"],
+          answers: [0, 1, 2],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question:
+            "在团队设计活动中，应该注意设计标准，下列属于典型的设计标准应该约定的是：",
+          options: [
+            "命名规范",
+            "接口标准",
+            "出错或者异常处理信息",
+            "设计表示方式",
+          ],
+          answers: [0, 1, 2, 3],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question: "典型地，在团队设计活动中，应该注意哪些内容：",
+          options: [
+            "设计标准的应用",
+            "复用的考虑",
+            "可测试性支持",
+            "可用性支持",
+          ],
+          answers: [0, 1, 2, 3],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question: "关于集成策略，下述描述中正确的是：",
+          options: [
+            "当待集成组件质量普遍不高的时候，不可以使用扁平化策略",
+            "当需要尽早获取可以工作的组件的时候，应该使用集簇式策略",
+            "当待集成组件质量普遍较高的时候，可以使用大爆炸式集成策略",
+            "持续集成本质上就是逐一添加策略",
+          ],
+          answers: [0, 1, 2, 3],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question: "当考虑集成策略的时候，应该注意如下哪些方面？",
+          options: [
+            "待集成组件的质量状态",
+            "待集成组件的获取方式",
+            "待集成组件的功能和关系",
+            "待集成组件的数量",
+          ],
+          answers: [0, 1, 2, 3],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question: "关于扁平化集成策略和集簇式集成策略，下述说法中正确的是：",
+          options: [
+            "扁平化策略可以较早地充分地暴露系统级别的错误",
+            "扁平化策略对于系统级别错误的暴露能力有限",
+            "集簇式集成策略有助于复用策略的实现",
+            "扁平化策略和集簇式策略的优缺点正好相反",
+          ],
+          answers: [0, 2, 3],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question: "下述活动是典型的验证（Verification）的是：",
+          options: ["需求评审", "详细设计评审", "单元测试", "试运行"],
+          answers: [0, 1, 2],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question: "下述活动是典型的确认（Validation）的是：",
+          options: ["验收测试", "代码评审", "系统测试", "持续集成"],
+          answers: [0, 2],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question: "下述产物中属于典型的确认（Validation）对象的是：",
+          options: [
+            "接口设计文档",
+            "源代码",
+            "用户手册",
+            "系统使用培训材料（视频、录像等）",
+          ],
+          answers: [2, 3],
+        },
+        {
+          category: "非敏捷·团队工程",
+          source: "PPT第六讲",
+          question: "下述关于需求开发的描述中，哪些是正确的？",
+          options: [
+            "客户需求是指客户提出的关于软件功能的具体要求",
+            "工期或者预算往往都是客户需求的一个方面",
+            "产品需求需要跟客户充分讨论才能获取",
+            "客户应该在需求开发活动中起到主导作用",
+          ],
+          answers: [1, 3],
+        },
+        {
+          category: "非敏捷·项目支持活动",
+          source: "PPT第七讲",
+          question: "下述产物中属于典型的配置项是：",
+          options: [
+            "接口设计文档",
+            "源代码",
+            "用户手册",
+            "系统使用培训材料（视频、录像等）",
+          ],
+          answers: [0, 1, 2, 3],
+        },
+        {
+          category: "非敏捷·项目支持活动",
+          source: "PPT第七讲",
+          question: "团队内部的配置审计通常应该关注什么：",
+          options: ["物理审计", "配置项列表", "配置管理记录", "基线计划"],
+          answers: [0, 1, 2, 3],
+        },
+        {
+          category: "非敏捷·项目支持活动",
+          source: "PPT第七讲",
+          question: "下列关于决策分析的论述中，不恰当的是：",
+          options: [
+            "决策分析指南中最关键的是明确需要开展决策分析活动的判定标准，即什么场合之下需要开展正式的决策分析活动",
+            "评价方法是体现决策者利益诉求的关键，因此，需要谨慎设计",
+            "候选方案的识别应该晚于评价标准",
+            "现实生活中的项目投标就是一个典型的决策分析活动",
+          ],
+          answers: [1],
+        },
+        {
+          category: "非敏捷·项目支持活动",
+          source: "PPT第七讲",
+          question: "下列关于根因分析的论述中，不恰当的是：",
+          options: [
+            "根因分析必须基于丰富的数据来选择合适的问题",
+            "鱼骨图是根因分析的有效手段",
+            "典型地，可以从技术、人员、培训以及过程角度开展根因分析",
+            "根因分析活动终止的唯一特征就是找到相应的根因的明确解决方案",
+          ],
+          answers: [3],
+        },
+        {
+          category: "非敏捷·软件过程",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question:
+            "软件开发的四个本质难题中，哪一个与软件发展所处的历史阶段没有直接关系？",
+          options: ["一致性", "不可见性", "复杂性", "可变性"],
+          answers: [1],
+        },
+        {
+          category: "非敏捷·软件过程",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "以下哪个因素促成了软件成为独立的产品？",
+          options: [
+            "互联网的出现",
+            "操作系统的出现",
+            "高级程序设计语言的出现",
+            "个人电脑的出现",
+          ],
+          answers: [1],
+        },
+        {
+          category: "非敏捷·软件过程",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "下述各个度量项中，哪一个不是 PSP 的基本度量项？",
+          options: ["缺陷", "时间", "风险", "规模"],
+          answers: [2],
+        },
+        {
+          category: "非敏捷·软件过程",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "下列哪些属于网络化和服务化阶段的典型软件应用特征？",
+          options: [
+            "用户数量急剧增加",
+            "通过 CD 和 DVD 等方式支持大容量和快速分发软件拷贝",
+            "通过 SaaS 等方式发布软件系统",
+            "快速演化、需求不确定",
+          ],
+          answers: [0, 2, 3],
+        },
+        {
+          category: "Kanban & Lean",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question:
+            "某团队已经把工作流程按步骤可视化到白板上，观察数周后发现多个步骤的在制品长期过多。按照 Kanban，下一步最恰当的做法是？",
+          options: [
+            "只要求成员更快完成看板上的工作",
+            "对各过程步骤中正在进行的工作项数量设置限制",
+            "要求进展缓慢阶段的成员投入更多时间",
+            "直接向所有较慢步骤增加人员",
+          ],
+          answers: [1],
+        },
+        {
+          category: "Kanban & Lean",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "下列哪一项更好地描述了如何使用 Kanban？",
+          options: [
+            "主要用于帮助团队确定成员的固定分工",
+            "只跟踪当前任务状态，以计算每个人还剩多少工作",
+            "观察工作项如何流经过程，据此限制 WIP，并改善工作在各流程步骤之间的流动",
+            "主要用于记录缺陷，并寻找修复单个产品问题的最快路径",
+          ],
+          answers: [2],
+        },
+        {
+          category: "Kanban & Lean",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question:
+            "以下哪项不是经常出现在 Kanban 工作项卡片（记事贴）中的内容？",
+          options: [
+            "团队名称",
+            "谁在处理这个工作项",
+            "工作项描述",
+            "完成时间或截止日期",
+          ],
+          answers: [0],
+        },
+        {
+          category: "非敏捷·估算计划跟踪",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "关于 PROBE 估算法，下列说法中不正确的有哪些？",
+          options: [
+            "PROBE 不能给出精确估算，因此适合用来和用户讨论需求与规模",
+            "PROBE 方法不能用来估算质量",
+            "PROBE 的估算结果带有小数就说明肯定不准确，因此项目估算不应使用",
+            "PROBE 方法不需要历史数据",
+          ],
+          answers: [0, 2, 3],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "关于面向用户的质量观，我们应当重点关注哪些问题？",
+          options: [
+            "用户期望是否存在优先级",
+            "用户期望的优先级会怎样影响软件开发",
+            "界面和可操作性必然是最重要的，因为用户可以直接感受到",
+            "真正的用户是谁",
+          ],
+          answers: [0, 1, 3],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "PSP 为什么使用缺陷管理来替代质量管理？下列说法正确的是？",
+          options: [
+            "因为与缺陷管理有关的活动本来都是软件开发必须开展的活动",
+            "因为缺陷往往对应面向用户质量观中优先级最高的基本期望",
+            "因为直接对多维度的软件质量进行管理较难操作，而缺陷管理更具体",
+            "因为缺陷管理和质量管理在概念上完全相同",
+          ],
+          answers: [1, 2],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "关于 PSP 评审检查表，下列说法中不恰当的是？",
+          options: [
+            "评审检查表应当依据缺陷数据和经验定期更新",
+            "评审检查表应长期保持不变，才能确保所有缺陷都不会遗漏",
+            "评审检查表应体现个人常见缺陷，具有一定个性化",
+            "项目团队所有成员应使用完全相同的评审检查表，以体现一致性",
+          ],
+          answers: [1, 3],
+        },
+        {
+          category: "非敏捷·质量管理",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question:
+            "在软件质量属性的常见划分中，下列哪些更典型地属于内部质量属性？",
+          options: ["安全性", "可靠性", "可移植性", "可扩展性"],
+          answers: [2, 3],
+        },
+        {
+          category: "DevOps",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question:
+            "下列哪些特征共同支撑了 DevOps 对当前社会软件系统期望的响应？",
+          options: [
+            "大量使用虚拟化技术",
+            "通过工具链支持高效率自动化",
+            "以敏捷开发、精益思想和 Kanban 支持快速开发、交付、迭代与演化",
+            "采用微服务架构设计",
+          ],
+          answers: [0, 1, 2, 3],
+        },
+        {
+          category: "DevOps",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "以下哪一项不属于微服务架构的典型特点？",
+          options: [
+            "围绕业务能力组织",
+            "低内聚和高耦合",
+            "基础设施自动化",
+            "去中心化",
+          ],
+          answers: [1],
+        },
+        {
+          category: "DevOps",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "使用以下哪个工具可以配置和执行 DevOps 持续交付流水线？",
+          options: ["Java", "SonarQube", "Jenkins", "JUnit"],
+          answers: [2],
+        },
+        {
+          category: "DevOps",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "Git 属于哪一类工具？",
+          options: ["版本控制工具", "持续集成工具", "监控工具", "单元测试工具"],
+          answers: [0],
+        },
+        {
+          category: "DevOps",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question:
+            "判断：在 DevOps 的 Three Ways（三步工作法）中，质量问题到第二个阶段才需要考虑。",
+          options: ["正确", "错误"],
+          answers: [1],
+        },
+        {
+          category: "DevOps",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question:
+            "判断：敏捷软件开发宣言表明，在 DevOps 中没有必要编写文档。",
+          options: ["正确", "错误"],
+          answers: [1],
+        },
+        {
+          category: "DevOps",
+          source: "MOOC《DevOps导论》期末客观题截图",
+          question: "判断：Nagios 不属于监控工具。",
+          options: ["正确", "错误"],
+          answers: [1],
+        },
+      ];
+      const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+      function shuffleArray(values) {
+        const copy = [...values];
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      }
+
+      function randomizeQuestionOptions(questionList) {
+        return structuredClone(questionList).map((question) => {
+          const order = shuffleArray(question.options.map((_, index) => index));
+          const oldToNew = new Map(
+            order.map((oldIndex, newIndex) => [oldIndex, newIndex]),
+          );
+          return {
+            ...question,
+            options: order.map((oldIndex) => question.options[oldIndex]),
+            answers: question.answers
+              .map((oldIndex) => oldToNew.get(oldIndex))
+              .sort((a, b) => a - b),
+          };
+        });
+      }
+
+      let questions = randomizeQuestionOptions(sourceQuestions);
+      let current = 0;
+      let state = questions.map(() => ({
+        selected: [],
+        checked: false,
+        correct: false,
+      }));
+      let autoNextTimer = null;
+      const $ = (id) => document.getElementById(id);
+
+      function esc(v) {
+        return String(v)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+      function sameSet(a, b) {
+        return (
+          a.length === b.length &&
+          [...a]
+            .sort((x, y) => x - y)
+            .every((v, i) => v === [...b].sort((x, y) => x - y)[i])
+        );
+      }
+      function answerText(q) {
+        return q.answers
+          .map((i) => `${letters[i]}、${q.options[i]}`)
+          .join("；");
+      }
+      function makeState() {
+        return questions.map(() => ({
+          selected: [],
+          checked: false,
+          correct: false,
+        }));
+      }
+
+      function render() {
+        if (!questions.length) return;
+        const q = questions[current],
+          s = state[current],
+          multi = q.answers.length > 1;
+        $("positionText").textContent =
+          `第 ${current + 1} / ${questions.length} 题`;
+        $("typeLabel").textContent = multi ? "多选题" : "单选题";
+        $("categoryLabel").textContent = q.category;
+        $("sourceLabel").textContent = q.source || "题库";
+        $("questionText").textContent = q.question;
+
+        const box = $("options");
+        box.innerHTML = "";
+        q.options.forEach((text, idx) => {
+          const label = document.createElement("label");
+          label.className = "option";
+          const selected = s.selected.includes(idx);
+          if (selected) label.classList.add("selected");
+          if (s.checked && q.answers.includes(idx))
+            label.classList.add("correct");
+          if (s.checked && selected && !q.answers.includes(idx))
+            label.classList.add("wrong");
+          label.innerHTML = `<input type="${multi ? "checkbox" : "radio"}" name="answer" ${selected ? "checked" : ""} ${s.checked ? "disabled" : ""}>
+      <span class="letter">${letters[idx]}</span><span>${esc(text)}</span>`;
+          if (!s.checked)
+            label.addEventListener("click", (event) => {
+              event.preventDefault();
+              selectOption(idx);
+            });
+          box.appendChild(label);
+        });
+
+        const feedback = $("feedback");
+        feedback.className = "feedback";
+        feedback.innerHTML = "";
+
+        if (s.checked) {
+          feedback.classList.add("show", s.correct ? "good" : "bad");
+          feedback.innerHTML = s.correct
+            ? `<strong>回答正确</strong>${current === questions.length - 1 ? "即将显示练习结果。" : "即将自动进入下一题。"}`
+            : `<strong>回答错误</strong>正确答案：${esc(answerText(q))}`;
+        } else if (
+          multi &&
+          s.selected.length > 0 &&
+          s.selected.every((idx) => q.answers.includes(idx))
+        ) {
+          const remaining = q.answers.length - s.selected.length;
+          feedback.classList.add("show", "good");
+          feedback.innerHTML = `<strong>该选项正确</strong>这是多选题，还需选择 ${remaining} 个正确选项。`;
+        }
+
+        $("prevBtn").disabled = current === 0;
+        $("nextBtn").disabled = !s.checked;
+        $("nextBtn").textContent =
+          current === questions.length - 1 ? "查看结果" : "下一题";
+        updateStats();
+      }
+
+      function scheduleAutoNext(answeredIndex) {
+        clearTimeout(autoNextTimer);
+        autoNextTimer = setTimeout(() => {
+          if (current !== answeredIndex) return;
+          const answeredState = state[answeredIndex];
+          if (
+            !answeredState ||
+            !answeredState.checked ||
+            !answeredState.correct
+          )
+            return;
+          goNext();
+        }, 850);
+      }
+
+      function selectOption(idx) {
+        const q = questions[current],
+          s = state[current],
+          multi = q.answers.length > 1;
+        if (s.checked) return;
+
+        if (!multi) {
+          s.selected = [idx];
+          s.checked = true;
+          s.correct = q.answers.includes(idx);
+          const answeredIndex = current;
+          render();
+          if (s.correct) scheduleAutoNext(answeredIndex);
+          return;
+        }
+
+        // 多选题：点击已选中的正确选项时允许取消。
+        if (s.selected.includes(idx)) {
+          s.selected = s.selected.filter((x) => x !== idx);
+          render();
+          return;
+        }
+
+        s.selected = [...s.selected, idx];
+
+        // 多选题一旦点到错误选项，立即判错并停留。
+        if (!q.answers.includes(idx)) {
+          s.checked = true;
+          s.correct = false;
+          render();
+          return;
+        }
+
+        // 所有正确选项均已选中时判对并自动前进。
+        if (sameSet(s.selected, q.answers)) {
+          s.checked = true;
+          s.correct = true;
+          const answeredIndex = current;
+          render();
+          scheduleAutoNext(answeredIndex);
+          return;
+        }
+
+        // 当前选项正确但答案尚未选全。
+        render();
+      }
+
+      function updateStats() {
+        const checked = state.filter((x) => x.checked).length;
+        const correct = state.filter((x) => x.checked && x.correct).length;
+        $("checkedCount").textContent = checked;
+        $("correctCount").textContent = correct;
+        $("wrongCount").textContent = checked - correct;
+        $("progressBar").style.width =
+          `${questions.length ? (checked / questions.length) * 100 : 0}%`;
+      }
+
+      function goPrev() {
+        clearTimeout(autoNextTimer);
+        if (current > 0) {
+          current--;
+          render();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+      function goNext() {
+        clearTimeout(autoNextTimer);
+        if (!state[current].checked) return;
+        if (current < questions.length - 1) {
+          current++;
+          render();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          showResults();
+        }
+      }
+
+      function showResults() {
+        const unchecked = state.filter((x) => !x.checked).length;
+        if (unchecked) {
+          const i = state.findIndex((x) => !x.checked);
+          if (
+            confirm(`还有 ${unchecked} 道题未检查。是否跳到第一道未检查题？`)
+          ) {
+            current = i;
+            render();
+          }
+          return;
+        }
+        const correct = state.filter((x) => x.correct).length,
+          percent = Math.round((correct / questions.length) * 100);
+        $("quizView").style.display = "none";
+        $("resultScreen").classList.add("show");
+        $("scoreValue").textContent = `${percent}%`;
+        $("scoreCircle").style.setProperty(
+          "--score-angle",
+          `${percent * 3.6}deg`,
+        );
+        $("resultText").textContent =
+          `答对 ${correct} 题，答错 ${questions.length - correct} 题，共 ${questions.length} 题。`;
+        $("retryWrongBtn").disabled = correct === questions.length;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function resetWith(newQuestions) {
+        clearTimeout(autoNextTimer);
+        questions = randomizeQuestionOptions(newQuestions);
+        current = 0;
+        state = makeState();
+        $("quizView").style.display = "block";
+        $("resultScreen").classList.remove("show");
+        render();
+      }
+      function shuffleCurrent() {
+        const copy = shuffleArray(questions);
+        resetWith(copy);
+      }
+      function retryWrong() {
+        const wrong = questions.filter(
+          (_, i) => state[i].checked && !state[i].correct,
+        );
+        if (wrong.length) resetWith(wrong);
+      }
+
+      $("prevBtn").addEventListener("click", goPrev);
+      $("nextBtn").addEventListener("click", goNext);
+      $("restartBtn").addEventListener("click", () =>
+        resetWith(sourceQuestions),
+      );
+      $("retryWrongBtn").addEventListener("click", retryWrong);
+      $("shuffleBtn").addEventListener("click", () => {
+        if (confirm("打乱题序会清空当前作答记录，是否继续？")) shuffleCurrent();
+      });
+      $("resetBtn").addEventListener("click", () => {
+        if (confirm("确定清空当前作答记录吗？")) resetWith(questions);
+      });
+      const filter = $("categoryFilter");
+      if (filter)
+        filter.addEventListener("change", (e) => {
+          if (confirm("切换题目范围会清空当前作答记录，是否继续？")) {
+            resetWith(
+              e.target.value === "全部"
+                ? sourceQuestions
+                : sourceQuestions.filter((q) => q.category === e.target.value),
+            );
+          } else {
+            e.target.value =
+              questions.length === sourceQuestions.length
+                ? "全部"
+                : questions[0].category;
+          }
+        });
+      document.addEventListener("keydown", (e) => {
+        if ($("resultScreen").classList.contains("show")) return;
+        const n = Number(e.key);
+        if (
+          Number.isInteger(n) &&
+          n >= 1 &&
+          n <= questions[current].options.length
+        ) {
+          selectOption(n - 1);
+        } else if (e.key === "Enter" && state[current].checked) {
+          goNext();
+        } else if (e.key === "ArrowLeft") {
+          goPrev();
+        } else if (e.key === "ArrowRight") {
+          goNext();
+        }
+      });
+      render();
+    </script>
+  </body>
+</html>
+</div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wuyuxing</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wuyuxing2005"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">认识是一个反复循环、不断深化的过程</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/software-quality-manage/" title="软件质量管理期末回忆">软件质量管理期末回忆</a><time datetime="2026-07-02T02:19:00.000Z" title="发表于 2026-07-02 10:19:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/design-patterns/" title="设计模式">设计模式</a><time datetime="2026-07-02T01:31:00.000Z" title="发表于 2026-07-02 09:31:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/software-design-exam/" title="软件系统设计期末回忆与评价">软件系统设计期末回忆与评价</a><time datetime="2026-07-02T01:30:00.000Z" title="发表于 2026-07-02 09:30:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/02/software-architecture/" title="软件架构">软件架构</a><time datetime="2026-07-02T01:30:00.000Z" title="发表于 2026-07-02 09:30:00">2026-07-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/17/linux-network94/" title="(94) close流程、to_do_list延迟清理与Connection析构时机">(94) close流程、to_do_list延迟清理与Connection析构时机</a><time datetime="2026-04-17T07:05:00.000Z" title="发表于 2026-04-17 15:05:00">2026-04-17</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/3dtouch%E4%B8%8E%E6%9C%BA%E6%A2%B0%E8%87%82%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">3dtouch与机械臂开发</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/blog%E6%90%AD%E5%BB%BA%E9%97%AE%E9%A2%98/"><span class="card-category-list-name">blog搭建问题</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux-network/"><span class="card-category-list-name">linux_network</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/webserver/"><span class="card-category-list-name">webserver</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/webserver/%E4%BA%92%E6%96%A5/"><span class="card-category-list-name">互斥</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/webserver/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"><span class="card-category-list-name">线程池</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E7%A8%8B/"><span class="card-category-list-name">编译原理课程</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E7%A8%8B/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/"><span class="card-category-list-name">复习资料</span><span class="card-category-list-count">1</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%AF%BE%E7%A8%8B%E5%A4%8D%E4%B9%A0/" style="font-size: 1.3em; color: #99a1ac">课程复习</a> <a href="/tags/unity-3dtouch/" style="font-size: 1.5em; color: #99a9bf">unity+3dtouch</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 1.1em; color: #999">blog搭建</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              七月 2026
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              三月 2026
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">10</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">22</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-07-02T02:49:32.133Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Wuyuxing</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4-b1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4-b1"></script><script src="/js/main.js?v=5.5.4-b1"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'wuyuxing2005/wuyuxing2005.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script>
+(function () {
+  var bgUrl = '/img/cover.png'; 
+
+  function hide() {
+    var el = document.getElementById('site-preload');
+    if (!el) return;
+    el.classList.add('hide');
+    setTimeout(function(){ el.remove(); }, 350);
+  }
+
+  window.addEventListener('load', function () {
+    var img = new Image();
+    img.src = bgUrl;
+    if (img.complete) return hide();
+    img.onload = hide;
+    img.onerror = hide;
+  });
+})();
+</script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4-b1"></script></div></div></body></html>
