@@ -95,8 +95,9 @@
   text-underline-offset: 4px;
 }
 
-#article-container :is(code, pre, .highlight) {
-  font-family: Consolas, 'Cascadia Code', monospace;
+body :is(code, pre, kbd, samp),
+#article-container :is(code, pre, kbd, .highlight) {
+  font-family: var(--article-font);
   letter-spacing: 0;
 }
 #article-container :not(pre) > code { font-size: .84em; }
