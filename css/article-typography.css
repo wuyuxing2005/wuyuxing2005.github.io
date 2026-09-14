@@ -1,0 +1,115 @@
+@import url('/fonts/lxgw-wenkai/lxgwwenkai-regular.css');
+
+/* Article typography: locally hosted WenKai, with a restrained lavender accent. */
+:root {
+  --article-ink: #303747;
+  --article-heading: #202535;
+  --article-accent: #8e88ed;
+  --article-rule: #e9e7f7;
+  --article-tint: #f7f6fc;
+  --article-font: 'LXGW WenKai', 'KaiTi', 'STKaiti', serif;
+}
+
+[data-theme='dark'] {
+  --article-ink: #cdd0dc;
+  --article-heading: #ececf5;
+  --article-accent: #b0a9ff;
+  --article-rule: #3c3855;
+  --article-tint: #262432;
+}
+
+#post #article-container {
+  max-width: 860px;
+  margin: 0 auto;
+  color: var(--article-ink);
+  font-family: var(--article-font);
+  font-size: 20px;
+  line-height: 1.95;
+  letter-spacing: .025em;
+  text-align: left;
+}
+
+#page-header #post-info .post-title,
+#post #post-info .post-title {
+  font-family: var(--article-font);
+  font-size: clamp(30px, 3.2vw, 44px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+#article-container p { margin: 0 0 1.2em; }
+
+#article-container :is(h1, h2, h3, h4, h5, h6) {
+  width: auto;
+  padding: 0;
+  margin: 1.8em 0 .8em;
+  color: var(--article-heading);
+  font-family: var(--article-font);
+  font-weight: 700;
+  line-height: 1.5;
+  scroll-margin-top: 85px;
+}
+
+#article-container :is(h1, h2) {
+  padding: 0 0 .35em 18px;
+  border-bottom: 1px solid var(--article-rule);
+}
+
+#article-container :is(h1, h2)::before {
+  position: absolute;
+  top: .3em;
+  left: 0;
+  width: 4px;
+  height: .95em;
+  border-radius: 3px;
+  background: var(--article-accent);
+  content: '';
+}
+
+#article-container :is(h3, h4, h5, h6)::before { content: none; }
+#article-container h1 { font-size: 1.8em; }
+#article-container h2 { font-size: 1.6em; }
+#article-container h3 { font-size: 1.3em; }
+#article-container :is(h4, h5, h6) { font-size: 1.1em; }
+#article-container > :first-child { margin-top: 0; }
+
+#article-container :is(ul, ol) { padding-left: 1.9em; margin: 1em 0 1.4em; }
+#article-container :is(ul, ol) > li { padding-left: .3em; margin: .65em 0; }
+#article-container li::marker { color: var(--article-accent); font-weight: 700; }
+#article-container li > :is(ul, ol) { margin: .4em 0; }
+#article-container li p { margin: 0 0 .55em; }
+
+#article-container blockquote {
+  margin: 1.4em 0;
+  padding: .9em 1.2em;
+  border-left: 4px solid var(--article-accent);
+  border-radius: 0 8px 8px 0;
+  background: var(--article-tint);
+  color: var(--article-ink);
+}
+#article-container blockquote > :last-child { margin-bottom: 0; }
+#article-container strong { color: var(--article-heading); }
+#article-container a:not(.headerlink):not(.btn) {
+  text-decoration: underline;
+  text-decoration-color: var(--article-accent);
+  text-underline-offset: 4px;
+}
+
+#article-container :is(code, pre, .highlight) {
+  font-family: Consolas, 'Cascadia Code', monospace;
+  letter-spacing: 0;
+}
+#article-container :not(pre) > code { font-size: .84em; }
+#article-container figure.highlight { margin: 1.4em 0; border-radius: 8px; font-size: 14px; line-height: 1.7; }
+#article-container .table-wrap { margin: 1.4em 0; }
+#article-container table:not(.highlight table) { font-size: .9em; }
+#article-container table:not(.highlight table) th { background: var(--article-tint); }
+#article-container hr { margin: 2em 0; border: 0; border-top: 1px solid var(--article-rule); }
+#article-container hr::before { content: none; }
+
+@media (max-width: 768px) {
+  #post { padding: 28px 20px; }
+  #post #article-container { font-size: 18px; line-height: 1.9; letter-spacing: .015em; }
+  #article-container h2 { font-size: 1.45em; }
+  #article-container blockquote { padding: .75em .85em; }
+}
