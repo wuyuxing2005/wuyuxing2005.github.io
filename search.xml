@@ -311,6 +311,31 @@
     
     
     <entry>
+      <title>blog搭建中遇到的问题</title>
+      <link href="/2026/01/26/blog_problem/"/>
+      <url>/2026/01/26/blog_problem/</url>
+      
+        <content type="html"><![CDATA[<p>1.使用butterfly后我的页面中的目录点击可以正常跳转，但是当前目录显示与当前正在看的章节不符合：</p><p>原因是图片（尤其是懒加载）会在页面渲染后继续撑高内容，但 Butterfly 的 TOC 位置只在初始化&#x2F;resize 时计算，导致滚动高亮提前跳到下一章。</p><p>在 butterfly\source\js\main.js 增加了 TOC 位置的重算触发：页面 load 和文章内图片 load 时都会更新标题位置，这样目录高亮会随真实位置对齐。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">updateHeaderPositions()</span><br><span class="line">btf.addEventListenerPjax(window, &#x27;resize&#x27;, btf.throttle(updateHeaderPositions, 200))</span><br></pre></td></tr></table></figure><p>替换成</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const scheduleUpdate = btf.throttle(updateHeaderPositions, 200)</span><br><span class="line">updateHeaderPositions()</span><br><span class="line">btf.addEventListenerPjax(window, &#x27;resize&#x27;, scheduleUpdate)</span><br><span class="line">btf.addEventListenerPjax(window, &#x27;load&#x27;, scheduleUpdate)</span><br><span class="line">$article.querySelectorAll(&#x27;img&#x27;).forEach(img =&gt; &#123;</span><br><span class="line">  if (!img.complete) &#123;</span><br><span class="line">    btf.addEventListenerPjax(img, &#x27;load&#x27;, scheduleUpdate)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> blog搭建问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> blog搭建 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>南京大学智软院编译原理（陈林）25秋期末回忆</title>
       <link href="/2026/01/26/compiler_exam/"/>
       <url>/2026/01/26/compiler_exam/</url>
@@ -330,31 +355,6 @@
         <tags>
             
             <tag> 课程复习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>blog搭建中遇到的问题</title>
-      <link href="/2026/01/26/blog_problem/"/>
-      <url>/2026/01/26/blog_problem/</url>
-      
-        <content type="html"><![CDATA[<p>1.使用butterfly后我的页面中的目录点击可以正常跳转，但是当前目录显示与当前正在看的章节不符合：</p><p>原因是图片（尤其是懒加载）会在页面渲染后继续撑高内容，但 Butterfly 的 TOC 位置只在初始化&#x2F;resize 时计算，导致滚动高亮提前跳到下一章。</p><p>在 butterfly\source\js\main.js 增加了 TOC 位置的重算触发：页面 load 和文章内图片 load 时都会更新标题位置，这样目录高亮会随真实位置对齐。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">updateHeaderPositions()</span><br><span class="line">btf.addEventListenerPjax(window, &#x27;resize&#x27;, btf.throttle(updateHeaderPositions, 200))</span><br></pre></td></tr></table></figure><p>替换成</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const scheduleUpdate = btf.throttle(updateHeaderPositions, 200)</span><br><span class="line">updateHeaderPositions()</span><br><span class="line">btf.addEventListenerPjax(window, &#x27;resize&#x27;, scheduleUpdate)</span><br><span class="line">btf.addEventListenerPjax(window, &#x27;load&#x27;, scheduleUpdate)</span><br><span class="line">$article.querySelectorAll(&#x27;img&#x27;).forEach(img =&gt; &#123;</span><br><span class="line">  if (!img.complete) &#123;</span><br><span class="line">    btf.addEventListenerPjax(img, &#x27;load&#x27;, scheduleUpdate)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> blog搭建问题 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> blog搭建 </tag>
             
         </tags>
       
@@ -511,6 +511,19 @@
     
     
     <entry>
+      <title>wuyuxing2005的博客</title>
+      <link href="/2026/01/11/home/"/>
+      <url>/2026/01/11/home/</url>
+      
+        <content type="html"><![CDATA[<p>20岁，是学生</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>互斥封装</title>
       <link href="/2026/01/11/day01__lock/"/>
       <url>/2026/01/11/day01__lock/</url>
@@ -525,19 +538,6 @@
           <category> 互斥 </category>
           
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>wuyuxing2005的博客</title>
-      <link href="/2026/01/11/home/"/>
-      <url>/2026/01/11/home/</url>
-      
-        <content type="html"><![CDATA[<p>20岁，是学生</p>]]></content>
-      
       
       
     </entry>
