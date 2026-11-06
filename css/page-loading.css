@@ -1,0 +1,33 @@
+html.page-loading body {
+  visibility: hidden;
+}
+
+html.page-loading::before,
+html.page-loading::after {
+  content: '';
+  position: fixed;
+  z-index: 2147483647;
+}
+
+html.page-loading::before {
+  inset: 0;
+  background: #f7f9fc;
+}
+
+html[data-theme="dark"].page-loading::before {
+  background: #151922;
+}
+
+html.page-loading::after {
+  inset: 0 auto auto 0;
+  width: var(--page-load-progress, 4%);
+  height: 5px;
+  background: #49aaf0;
+  transition: width 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.page-loading::after {
+    transition: none;
+  }
+}
