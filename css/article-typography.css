@@ -114,3 +114,9 @@ body :is(code, pre, kbd, samp),
   #article-container h2 { font-size: 1.45em; }
   #article-container blockquote { padding: .75em .85em; }
 }
+
+/* Preserve the intrinsic ratio of article images on narrow screens. */
+#article-container img[width][height] {
+  max-width: 100%;
+  height: auto;
+}
