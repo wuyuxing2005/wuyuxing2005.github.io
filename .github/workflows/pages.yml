@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.retry_deploy.outputs.page_url || steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -32,5 +32,21 @@ jobs:
         with:
           path: ${{ runner.temp }}/hexo-site
       - id: deployment
+        continue-on-error: true
         uses: actions/deploy-pages@v4
+      - name: Wait before retrying Pages
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 8
+      - name: Upload a fresh artifact for the retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          name: github-pages-retry
+          path: ${{ runner.temp }}/hexo-site
+      - name: Retry failed Pages deployment
+        if: steps.deployment.outcome == 'failure'
+        id: retry_deploy
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-retry
 
