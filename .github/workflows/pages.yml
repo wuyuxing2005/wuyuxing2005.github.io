@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -31,6 +32,20 @@ jobs:
       - uses: actions/upload-pages-artifact@v4
         with:
           path: ${{ runner.temp }}/hexo-site
+      - name: Wait for GitHub Pages artifact indexing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages
+        run: &wait_for_pages_artifact |
+          set -euo pipefail
+          for attempt in {1..18}; do
+            if gh api --method GET "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" -f "name=$ARTIFACT_NAME" --jq '.total_count' | grep -qx '1'; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "GitHub did not index the Pages artifact $ARTIFACT_NAME" >&2
+          exit 1
       - id: deployment
         continue-on-error: true
         uses: actions/deploy-pages@v4
@@ -43,6 +58,12 @@ jobs:
         with:
           name: github-pages-retry
           path: ${{ runner.temp }}/hexo-site
+      - name: Wait for GitHub Pages retry artifact indexing
+        if: steps.deployment.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-retry
+        run: *wait_for_pages_artifact
       - name: Retry failed Pages deployment
         if: steps.deployment.outcome == 'failure'
         id: retry_deploy
