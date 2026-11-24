@@ -5,7 +5,6 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: read
   contents: read
   pages: write
   id-token: write
@@ -17,6 +16,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 14
     environment:
       name: github-pages
       url: ${{ steps.retry_deploy.outputs.page_url || steps.deployment.outputs.page_url }}
@@ -30,44 +30,69 @@ jobs:
           mkdir -p "$RUNNER_TEMP/hexo-site"
           rsync -a --exclude='/.git' --exclude='/.github' ./ "$RUNNER_TEMP/hexo-site/"
       - uses: actions/upload-pages-artifact@v4
+        id: artifact
         with:
           path: ${{ runner.temp }}/hexo-site
-      - name: Wait for GitHub Pages artifact indexing
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ARTIFACT_NAME: github-pages
-        run: &wait_for_pages_artifact |
-          set -euo pipefail
-          for attempt in {1..18}; do
-            if gh api --method GET "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" -f "name=$ARTIFACT_NAME" --jq '.total_count' | grep -qx '1'; then
-              exit 0
-            fi
-            sleep 5
-          done
-          echo "GitHub did not index the Pages artifact $ARTIFACT_NAME" >&2
-          exit 1
-      - id: deployment
+      - name: Deploy the uploaded artifact by ID
+        id: deployment
         continue-on-error: true
-        uses: actions/deploy-pages@v4
-      - name: Wait before retrying Pages
-        if: steps.deployment.outcome == 'failure'
-        run: sleep 8
+        uses: actions/github-script@v8
+        env:
+          ARTIFACT_ID: ${{ steps.artifact.outputs.artifact_id }}
+        with:
+          script: &deploy_artifact |
+            const artifactId = Number(process.env.ARTIFACT_ID);
+            if (!Number.isSafeInteger(artifactId) || artifactId <= 0) {
+              throw new Error('The Pages upload did not return an artifact ID.');
+            }
+            const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+            const transient = status => [404, 409, 429].includes(status) || status >= 500;
+            const request = async (route, parameters) => {
+              for (let retry = 0; retry < 5; retry++) {
+                try {
+                  return (await github.request(route, { ...context.repo, ...parameters })).data;
+                } catch (error) {
+                  if (!transient(error.status) || retry === 4) {
+                    throw new Error(`Pages API failed (HTTP ${error.status ?? 'unknown'}).`);
+                  }
+                  await sleep(4000 * (retry + 1));
+                }
+              }
+            };
+            const deployment = await request('POST /repos/{owner}/{repo}/pages/deployments', {
+              artifact_id: artifactId,
+              pages_build_version: context.sha,
+              oidc_token: await core.getIDToken(),
+            });
+            const deployment_id = deployment.id || deployment.status_url?.split('/').pop() || context.sha;
+            for (let poll = 0; poll < 30; poll++) {
+              await sleep(5000);
+              const { status } = await request(
+                'GET /repos/{owner}/{repo}/pages/deployments/{deployment_id}', { deployment_id },
+              );
+              core.info(`Pages deployment: ${status}`);
+              if (status === 'succeed') {
+                core.setOutput('page_url', deployment.page_url);
+                return;
+              }
+              if (['deployment_failed', 'deployment_perms_error', 'deployment_content_failed',
+                   'deployment_cancelled', 'deployment_lost'].includes(status)) {
+                throw new Error(`Pages deployment ended with ${status}.`);
+              }
+            }
+            throw new Error('Timed out waiting for GitHub Pages.');
       - name: Upload a fresh artifact for the retry
         if: steps.deployment.outcome == 'failure'
+        id: retry_artifact
         uses: actions/upload-pages-artifact@v4
         with:
           name: github-pages-retry
           path: ${{ runner.temp }}/hexo-site
-      - name: Wait for GitHub Pages retry artifact indexing
-        if: steps.deployment.outcome == 'failure'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ARTIFACT_NAME: github-pages-retry
-        run: *wait_for_pages_artifact
-      - name: Retry failed Pages deployment
+      - name: Retry Pages using the new artifact ID
         if: steps.deployment.outcome == 'failure'
         id: retry_deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/github-script@v8
+        env:
+          ARTIFACT_ID: ${{ steps.retry_artifact.outputs.artifact_id }}
         with:
-          artifact_name: github-pages-retry
-
+          script: *deploy_artifact
